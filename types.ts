@@ -1,45 +1,52 @@
 type Presentation = {
+	name: string,/*имя презентации*/
 	slides: Array<Slide>,
-	selectedSlide: {
-		slide: Array<Slide>,
-		selectedObjects: Array<Obj>,
-	},
-	nameOfPresentation: string,
+	selection: {/*выделение*/
+		slideIds: Array<string>,
+		objectIds: Array<string>
+	}
 }
 
 type Slide = {
-    objects: Array<Obj>,
+    objects: Array<SlideObject>,
 	background: string,  //Создеём картину и растягиваем её по слайду
 }
 
-type Obj = {
+/* !ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
+interface SlideObject { /* рамка */
+	id: string,
 	width: number,
 	height: number,
-	xCoordinate: number,
-	yCoordinate: number,
-	data: Img | Figures | Textbox,
+	x: number,
+	y: number,
 }
 
-type Textbox = {
-    colorOfText: string,
-	colorOfBackgroung: string,
-	textBlock: string,
+type Textbox = SlideObject & {
+    textColor: string,
+	backgroundColor: string,
+	text: string,
 	font: string,
 	textSize: number,
-	styleOfText: 'Bold' | 'Italic' | 'Underlined' | 'Usual',
+	textStyle: 'Bold' | 'Italic' | 'Underlined' | 'Usual',
 }
 
-type Figures = {
+type Figure = SlideObject & {
     color: string,
-	colorOfStroke: string,
+	strokeColor: string,
 	opacity: number,
-	typeOfFigure: 'Circle' | 'Triangle' | 'Rectangle',
+	type: 'Circle' | 'Triangle' | 'Rectangle',
 }
 
-type Img = {
+type Image = SlideObject & {
     opacity: number,
     path: string,
 }
 
-
-
+export type {
+	Presentation,
+	Slide,
+	SlideObject, //Obj -> SlideObject
+	Figure,
+	Image, //Img -> Image
+	Textbox
+}
