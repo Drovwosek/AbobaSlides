@@ -1,45 +1,48 @@
-const presa: Presentation =
-{
-    slides: [slide1, slideN],
-	selectedSlide: {
-	    slide: slides[0],
-		selectedObjects: [img, TextBox],
-	},
-	nameOfPresentation: "AbobaPesentation",
+import {Presentation, Slide, Textbox, Image} from "./types";
+
+const textbox: Textbox = {
+	id: "1",
+	width: 101,
+	height: 202,
+	x: 130,
+	y: 120,
+	textColor: "#000",
+	backgroundColor: "#000",
+	text: "Test text data",
+	font: "IBM Plex",
+	textSize: 18,
+	textStyle: 'bold',
 }
 
-const slide1: Slide = 
-{
-    objects: [img, Circle],
+const image: Image = {
+	id: "2",
+	width: 101,
+	height: 202,
+	x: 210,
+	y: 220,
+	opacity: 90,
+	src: "base64encodedimage",
+}
+
+
+const firstSlide: Slide = {
+	id: "3",
+	objects: [textbox, image],
 	background: "#fff",
 }
 
-const slideN: Slide = 
-{
-    objects: [],
+const secondSlide: Slide = {
+	id: "4",
+	objects: [],
 	background: "#000",
 }
 
-const Textbox: = {
-	width: 101,
-	height: 202,
-	typeOfObject: "Figures",
-	xCoordinate: 130,
-	yCoordinate: 120,
-    data.colorOfText: "#dc",
-	data.colorOfBackgroung: "#000",
-	data.textBlock: "amogus",
-	data.font: "IBM Plex",
-	data.textSize: 8,
-}
-
-const img: Obj = 
+const presentation: Presentation =
 {
-	width: 101,
-	height: 202,
-	typeOfObject: "Figures",
-	xCoordinate: 210,
-	yCoordinate: 220,
-	data.opacity: 90,
-    data.path: "iڱu(u+",
+	name: "Presentation Example",
+    slides: [firstSlide, secondSlide],
+	selection: {
+	    slideIds: ["3"],
+		objectIds: ["2"],
+	},
 }
