@@ -15,7 +15,6 @@ type Slide = {
 type Obj = {
 	width: number,
 	height: number,
-	//typeOfObject: 'Textbox' | 'figure' | 'img',
 	xCoordinate: number,
 	yCoordinate: number,
 	data: Img | Figures | Textbox,
@@ -34,11 +33,13 @@ type Figures = {
     color: string,
 	colorOfStroke: string,
 	opacity: number,
-	typeOfFigure: 'circle' | 'rectangle' | 'triangle',
+	typeOfFigure: 'Circle' | 'Triangle' | 'Rectangle',
 }
 
 type Img = {
     opacity: number,
     path: string,
 }
+
+
 

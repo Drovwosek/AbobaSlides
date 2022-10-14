@@ -1,50 +1,4 @@
-type Presentation =
-    {
-        slides: Array<Slide>,
-        selectedSlide: {
-            slide: Array<Slide>,
-            selectedObjects: Array<Obj>,
-        },
-        nameOfPresentation: string,
-    }
-
-type Slide =
-    {
-        objects: [ object, ],
-        background: string,  //Создеём картину и растягиваем её по слайду
-    }
-
-type Obj =
-    {
-        width: number,
-        height: number,
-        typeOfObject: string, //Textbox, Figures, img
-    }
-
-type Textbox =
-    {
-        colorOfText: string,
-        colorOfBackgroung: string,
-        textBlock: string,
-        font: string,
-        textSize: number,
-    }
-
-type Figures =
-    {
-        color: string,
-        colorOfStroke: string,
-        opacity: number,
-        typeOfFigure: string,
-    }
-
-type Img =
-    {
-        opacity: number,
-        path: string,
-    }
-
-
+import  from "./types";
 
 function addSlide(presentation: Presentation): Presentation {//add in the end
 }
@@ -65,7 +19,15 @@ function unselectObject(presentation: Presentation): Presentation {}
 
 function moveObject(presentation: Presentation): Presentation {}
 
-function addObject(presentation: Presentation): Presentation {}
+function addTextbox(presentation: Presentation): Presentation {}
+
+function addRectangle(presentation: Presentation): Presentation {}
+
+function addCircle(presentation: Presentation): Presentation {}
+
+function addTriangle(presentation: Presentation): Presentation {}
+
+function addImage(presentation: Presentation): Presentation {}
 
 function addBackgroundOfSlide(presentation: Presentation): Presentation {
 

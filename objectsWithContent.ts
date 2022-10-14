@@ -3,14 +3,14 @@ const presa: Presentation =
     slides: [slide1, slideN],
 	selectedSlide: {
 	    slide: slides[0],
-		selectedObjects: [Rect, img, TextBox],
+		selectedObjects: [img, TextBox],
 	},
 	nameOfPresentation: "AbobaPesentation",
 }
 
 const slide1: Slide = 
 {
-    objects: [Rect, Circle],
+    objects: [img, Circle],
 	background: "#fff",
 }
 
@@ -20,27 +20,17 @@ const slideN: Slide =
 	background: "#000",
 }
 
-const Rect: Obj =
-{
-    width: 101,
-	height: 202,
-	typeOfObject: "Figures",
-	xCoordinate: 10,
-	yCoordinate: 20,
-}
-
-const TextBox: Obj =
-{
+const Textbox:
 	width: 101,
 	height: 202,
 	typeOfObject: "Figures",
 	xCoordinate: 130,
 	yCoordinate: 120,
-    // colorOfText: "#dc",
-	// colorOfBackgroung: "#000",
-	// textBlock: "amogus",
-	// font: "IBM Plex",
-	// textSize: 8,
+    data.colorOfText: "#dc",
+	data.colorOfBackgroung: "#000",
+	data.textBlock: "amogus",
+	data.font: "IBM Plex",
+	data.textSize: 8,
 }
 
 const img: Obj = 
@@ -50,6 +40,6 @@ const img: Obj =
 	typeOfObject: "Figures",
 	xCoordinate: 210,
 	yCoordinate: 220,
-	//opacity: 90,
-    //path: "iڱu(u+",
+	data.opacity: 90,
+    data.path: "iڱu(u+",
 }
