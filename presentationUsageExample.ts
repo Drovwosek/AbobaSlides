@@ -1,4 +1,4 @@
-import {Presentation, Slide, Textbox, Image} from "./types";
+import {Presentation, Slide, Textbox, Image} from "./model/types";
 
 const textbox: Textbox = {
 	id: "1",
