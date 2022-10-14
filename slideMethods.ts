@@ -24,15 +24,3 @@ function setBackgroundSlide(presentation: Presentation): Presentation {
     return presentation
 }
 
-
-//create presentation
-//Rename presentation
-//изменить цвет текста
-//изменить фон
-//загрузить картинку
-//установить картинку как фон
-//загрузить презу
-//выгрузить презу
-//изменить размер текста
-//изменить шрифт текста
-//изменить стиль текста
