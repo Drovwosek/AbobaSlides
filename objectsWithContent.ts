@@ -20,7 +20,7 @@ const slideN: Slide =
 	background: "#000",
 }
 
-const Textbox:
+const Textbox: = {
 	width: 101,
 	height: 202,
 	typeOfObject: "Figures",

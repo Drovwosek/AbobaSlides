@@ -1,4 +1,4 @@
-import {Presentation, Slide} from "./types";
+import {Presentation, Slide} from "../types";
 
 function createPresentation(presentation: Presentation): Presentation {
     return presentation
@@ -13,5 +13,15 @@ function exportPresentationJson(presentation: Presentation): string {
 }
 
 
-//загрузить презу
-//выгрузить презу
+
+
+
+
+
+function downloadPresentation(presentation: Presentation): Presentation {
+    return presentation
+}
+
+function uploadPresentation(presentation: Presentation): Presentation {
+    return presentation
+}

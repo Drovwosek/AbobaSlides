@@ -1,4 +1,4 @@
-import {Presentation} from "./types";
+import {Presentation} from "../types";
 
 function selectObject(presentation: Presentation): Presentation {
     return presentation

@@ -1,4 +1,4 @@
-import {Presentation, Slide} from "./types";
+import {Presentation, Slide} from "../types";
 
 function addSlide(presentation: Presentation): Presentation {//add in the end
     return presentation
