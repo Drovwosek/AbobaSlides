@@ -28,19 +28,19 @@ type Textbox = SlideObject & {
 	text: string,
 	font: string,
 	textSize: number,
-	textStyle: 'Bold' | 'Italic' | 'Underlined' | 'Usual',
+	textStyle: 'bold' | 'italic' | 'underlined' | 'normal',
 }
 
 type Figure = SlideObject & {
     color: string,
 	strokeColor: string,
 	opacity: number,
-	type: 'Circle' | 'Triangle' | 'Rectangle',
+	type: 'circle' | 'triangle' | 'rectangle',
 }
 
 type Image = SlideObject & {
     opacity: number,
-    path: string,
+	src: string,
 }
 
 export type {
