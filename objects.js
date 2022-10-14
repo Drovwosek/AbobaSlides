@@ -4,12 +4,12 @@ const textbox = {
 	height: 200,
 	x: 10,
 	y: 20,
-	colorOfText: "#660c0c",
-	colorOfBackground: "#fff",
+	textColor: "#660c0c",
+	backgroundColor: "#fff",
 	text: "Abob",
 	font: "Open Sans",
 	textSize: 1009,
-	styleOfText: "Usual", //Bold, Italic, Underlined, Usual
+	textStyle: "Usual", //Bold, Italic, Underlined, Usual
 }
 
 const rect = {
@@ -19,8 +19,9 @@ const rect = {
 	x: 10,
 	y: 20,
 	color: "#fff",
-	colorOfStroke: "#000",
+	strokeColor: "#000",
 	opacity: 1,
+	type: "Rectangle"
 }
 
 const slide1 = {
@@ -31,9 +32,9 @@ const slide1 = {
 
 const presentation = {
 	slides: [slide1],
-	nameOfPresentation: "AbobaPresa",
-	selectedSlide: {
-		slide: [slide1],
-		selectedObjects: [textbox],
+	name: "AbobaPresa",
+	selection: {
+		slideIds: ["1"],
+		objectIds: ["2"],
 	},
 }
