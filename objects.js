@@ -1,4 +1,4 @@
-const object1 = {
+const textbox = {
 	id: "1",
 	width: 100,
 	height: 200,
@@ -12,20 +12,19 @@ const object1 = {
 	styleOfText: "Usual", //Bold, Italic, Underlined, Usual
 }
 
-const object2 = {
+const rect = {
 	id: "2",
-	Width: 100,
-	Height: 200,
+	width: 100,
+	height: 200,
 	x: 10,
 	y: 20,
 	color: "#fff",
 	colorOfStroke: "#000",
 	opacity: 1,
-	typeOfFigure: "Circle",
 }
 
 const slide1 = {
-	objects: [object1, object2],
+	objects: [textbox, rect],
 	id: "1",
 	background: "#FFF",
 }
@@ -35,6 +34,6 @@ const presentation = {
 	nameOfPresentation: "AbobaPresa",
 	selectedSlide: {
 		slide: [slide1],
-		selectedObjects: [object1],
+		selectedObjects: [textbox],
 	},
 }
