@@ -1,4 +1,5 @@
 const object1 = {
+	id: "1",
 	width: 100,
 	height: 200,
 	x: 10,
@@ -12,6 +13,7 @@ const object1 = {
 }
 
 const object2 = {
+	id: "2",
 	Width: 100,
 	Height: 200,
 	x: 10,
@@ -24,7 +26,7 @@ const object2 = {
 
 const slide1 = {
 	objects: [object1, object2],
-	idSlide: 1,
+	id: "1",
 	background: "#FFF",
 }
 
