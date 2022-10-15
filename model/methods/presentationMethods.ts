@@ -12,6 +12,6 @@ function exportPresentationJson(presentation: Presentation): string {
     return ''
 }
 
-function importPresentationJson(string: JSON ,presentation: Presentation): Presentation { //что это за хуйня
+function importPresentationJson(string: JSON, presentation: Presentation): Presentation { //что это за хуйня
     return presentation
 }
