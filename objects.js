@@ -31,11 +31,18 @@ const slide1 = {
 	background: "#FFF",
 }
 
+const selection = {
+	slideIds: ["1"],
+	objectIds: ["2"],
+}
+
 const presentation = {
 	slides: [slide1],
 	name: "AbobaPresa",
-	selection: {
-		slideIds: ["1"],
-		objectIds: ["2"],
-	},
 }
+
+const application = {
+	presentation: presentation,
+	selection: selection,
+}
+
