@@ -1,17 +1,27 @@
 import {Presentation, Slide} from "../types";
 
-function createPresentation(presentation: Presentation): Presentation {
-    return presentation
+function createPresentation(): Presentation {
+    return {
+        name : "new Presentation",
+        slides: [],
+        selection: {
+            slideIds: [],
+            objectIds: []
+        }
+    }
 }
 
-function renamePresentation(presentation: Presentation): Presentation {
-    return presentation
+function renamePresentation(presentation: Presentation, newName: string): Presentation {
+    return {
+        ...presentation,
+        name: newName,
+    }
 }
 
 function exportPresentationJson(presentation: Presentation): string {
-    return ''
+    return JSON.stringify(presentation)
 }
 
-function importPresentationJson(json: string, presentation: Presentation): Presentation { //что это за хуйня
-    return presentation
+function importPresentationJson(json: string): Presentation {
+    return JSON.parse(json)
 }

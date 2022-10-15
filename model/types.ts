@@ -13,7 +13,7 @@ type Slide = {
 	background: string,
 }
 
-/* !ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
+/* !ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ или композиция?*/
 interface SlideObject { /* рамка */
 	id: string,
 	width: number,

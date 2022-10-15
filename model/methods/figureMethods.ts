@@ -1,6 +1,7 @@
 import {Presentation} from "../types";
 
 function addRectangle(presentation: Presentation): Presentation {
+
     return presentation
 }
 
