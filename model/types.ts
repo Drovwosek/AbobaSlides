@@ -8,10 +8,6 @@ type ApplicationState = {
 type Presentation = {
 	name: string,/*имя презентации*/
 	slides: Array<Slide>,
-	selection: {/*выделение*/
-		slideIds: Array<string>,
-		objectIds: Array<string>
-	}
 }
 
 function isPresentation(object: any): object is Presentation {
@@ -43,7 +39,7 @@ function isSelection(object: any): object is Selection {
 
 type Slide = {
 	id: string,
-    objects: Array<SlideObject>,
+	objects: Array<SlideObject>,
 	background: string,
 }
 
@@ -97,7 +93,7 @@ function isTextbox(object: any): object is Textbox {
 }
 
 type Figure = SlideObject & {
-    color: string,
+	color: string,
 	strokeColor: string,
 	opacity: number,
 	type: 'circle' | 'triangle' | 'rectangle',
@@ -113,7 +109,7 @@ function isFigure(object: any): object is Figure {
 }
 
 type Image = SlideObject & {
-    opacity: number,
+	opacity: number,
 	src: string,
 }
 
@@ -127,9 +123,18 @@ function isImage(object: any): object is Image {
 export type {
 	ApplicationState,
 	Presentation,
+	SelectionData,
 	Slide,
 	SlideObject, //Obj -> SlideObject
 	Figure,
 	Image, //Img -> Image
 	Textbox,
+}
+
+export {
+	isPresentation,
+	isTextbox,
+	isFigure,
+	isImage,
+	createEmptySelection,
 }

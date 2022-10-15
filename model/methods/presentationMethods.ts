@@ -2,26 +2,38 @@ import {ApplicationState, createEmptySelection, isPresentation, Presentation, Se
 
 function createPresentation(): ApplicationState {
     return {
-        name : "new Presentation",
-        slides: [],
-        selection: {
-            slideIds: [],
-            objectIds: []
+        presentation: {
+            name : "new Presentation",
+            slides: [],
+        },
+        selection: createEmptySelection()
+    }
+}
+
+function renamePresentation(app: ApplicationState, newName: string): ApplicationState {
+    return {
+        ...app,
+        presentation: {
+            ...app.presentation,
+            name: newName,
         }
     }
 }
 
-function renamePresentation(presentation: Presentation, newName: string): Presentation {
-    return {
-        ...presentation,
-        name: newName,
+function exportPresentationJson(app: ApplicationState): string {
+    return JSON.stringify(app.presentation)
+}
+
+function importPresentationJson(json: string): ApplicationState {
+    const rawPresentation = JSON.parse(json)
+
+    if (!isPresentation(rawPresentation)) {
+        console.error("invalid input presentation")
+        return createPresentation()
     }
-}
 
-function exportPresentationJson(presentation: Presentation): string {
-    return JSON.stringify(presentation)
-}
-
-function importPresentationJson(json: string): Presentation {
-    return JSON.parse(json)
+    return {
+        presentation: rawPresentation,
+        selection: createEmptySelection()
+    }
 }
