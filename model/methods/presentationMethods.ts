@@ -1,6 +1,6 @@
-import {Presentation, Slide} from "../types";
+import {ApplicationState, createEmptySelection, isPresentation, Presentation, SelectionData} from "../types"
 
-function createPresentation(): Presentation {
+function createPresentation(): ApplicationState {
     return {
         name : "new Presentation",
         slides: [],
