@@ -10,7 +10,7 @@ type Presentation = {
 type Slide = {
 	id: string,
     objects: Array<SlideObject>,
-	background: string,  //Создеём картину и растягиваем её по слайду
+	background: string,
 }
 
 /* !ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/

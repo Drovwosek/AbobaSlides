@@ -4,12 +4,6 @@ function addTextbox(presentation: Presentation): Presentation {
     return presentation
 }
 
-
-
-
-
-
-
 function changeTextColor(presentation: Presentation): Presentation {
     return presentation
 }

@@ -12,16 +12,6 @@ function exportPresentationJson(presentation: Presentation): string {
     return ''
 }
 
-
-
-
-
-
-
-function downloadPresentation(presentation: Presentation): Presentation {
-    return presentation
-}
-
-function uploadPresentation(presentation: Presentation): Presentation {
+function importPresentationJson(string: JSON ,presentation: Presentation): Presentation { //что это за хуйня
     return presentation
 }

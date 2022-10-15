@@ -23,4 +23,3 @@ function unselectSlide(presentation: Presentation): Presentation {
 function setBackgroundSlide(presentation: Presentation): Presentation {
     return presentation
 }
-
