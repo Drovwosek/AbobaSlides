@@ -29,6 +29,7 @@ type Textbox = SlideObject & {
 	font: string,
 	textSize: number,
 	textStyle: 'bold' | 'italic' | 'underlined' | 'normal',
+	alignment: 'left' | 'center' | 'right',
 }
 
 type Figure = SlideObject & {

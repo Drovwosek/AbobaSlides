@@ -12,6 +12,7 @@ const textbox: Textbox = {
 	font: "IBM Plex",
 	textSize: 18,
 	textStyle: 'bold',
+	alignment: "left",
 }
 
 const image: Image = {

@@ -10,6 +10,7 @@ const textbox = {
 	font: "Open Sans",
 	textSize: 1009,
 	textStyle: "Usual", //Bold, Italic, Underlined, Usual
+	alignment: "left",
 }
 
 const rect = {
