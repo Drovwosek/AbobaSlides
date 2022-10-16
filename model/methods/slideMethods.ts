@@ -1,25 +1,46 @@
-import {Presentation, Slide} from "../types";
+import {ApplicationState, Presentation, Slide} from "../types";
 
-function addSlide(presentation: Presentation): Presentation {//add in the end
-    return presentation
+function addSlide(app: ApplicationState): ApplicationState {
+    return {
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.slice(-1)
+        }
+    }
 }
 
-function deleteSlide(presentation: Presentation, slide: Slide): Presentation {
-    return presentation
+function deleteSlides(app: ApplicationState, Slide: Slide): ApplicationState { //
+    /* допишу после проверки addSlides*/
+    return {
+        ...app
+    }
 }
 
-function moveSlides(presentation: Presentation): Presentation {
-    return presentation
+function moveSlides(app: ApplicationState): ApplicationState {
+    /* допишу после проверки addSlides*/
+    return {
+        ...app
+    }
 }
 
-function selectSlide(presentation: Presentation): Presentation {
-    return presentation
+function selectSlide(app: ApplicationState): ApplicationState {
+    /*обработка события*/
+    return {
+        ...app
+    }
 }
 
-function unselectSlide(presentation: Presentation): Presentation {
-    return presentation
+function unselectSlide(app: ApplicationState): ApplicationState {
+    /*обработка события*/
+    return {
+        ...app
+    }
 }
 
-function setBackgroundSlide(presentation: Presentation): Presentation {
-    return presentation
+function setBackgroundSlide(app: ApplicationState): ApplicationState {
+/*Залупаемся с объектами*/
+    return {
+        ...app
+    }
 }

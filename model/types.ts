@@ -6,7 +6,7 @@ type ApplicationState = {
 }
 
 type Presentation = {
-	name: string,/*имя презентации*/
+	name: string,
 	slides: Array<Slide>,
 }
 
@@ -18,12 +18,12 @@ function isPresentation(object: any): object is Presentation {
 	return hasName && hasSlides && hasSelection
 }
 
-type SelectionData = {/*выделение*/
+type SelectionData = {
 	slideIds: Array<string>,
 	objectIds: Array<string>
 }
 
-function createEmptySelection(): SelectionData {
+function createEmptySelection(): SelectionData { /*вынести в отдельный файл*/
 	return {
 		slideIds: [],
 		objectIds: []
@@ -51,8 +51,8 @@ function isSlide(object: any): object is Slide {
 	return hasId && hasObjects && hasBackground
 }
 
-/* !ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
-interface SlideObject { /* рамка */
+/*!ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
+interface SlideObject {
 	id: string,
 	width: number,
 	height: number,
