@@ -16,6 +16,14 @@ function moveObject(presentation: Presentation, payload: MoveObjectPayload): Pre
     return presentation
 }
 
+interface ResizeObjectPayload { /* получаем кончные коордианты из /события нажать отпустить/ */
+    width: number,
+    height: number,
+}
+function resizeObject(presentation: Presentation, payload: ResizeObjectPayload): Presentation {
+    return presentation
+}
+
 function removeObject(presentation: Presentation): Presentation { /*см выделенные и удаляй*/
     return presentation
 }
