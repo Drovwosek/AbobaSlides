@@ -13,7 +13,11 @@ function addSlide(app: ApplicationState): ApplicationState {
 function deleteSlides(app: ApplicationState, Slide: Slide): ApplicationState { //
     /* допишу после проверки addSlides*/
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.slice(0, app.presentation.slides.length - 1)
+        }
     }
 }
 
@@ -24,17 +28,27 @@ function moveSlides(app: ApplicationState): ApplicationState {
     }
 }
 
-function selectSlide(app: ApplicationState): ApplicationState {
+function selectSlide(app: ApplicationState, slideId: string): ApplicationState {
     /*обработка события*/
     return {
-        ...app
+        ...app,
+        selection: {
+            ...app.selection,
+            slideIds: app.selection.slideIds.concat(slideId)
+        }
     }
 }
 
 function unselectSlide(app: ApplicationState): ApplicationState {
     /*обработка события*/
+    //спорная хуйня
     return {
-        ...app
+        ...app,
+        selection: {
+            ...app.selection,
+            slideIds: [],
+            objectIds: [],
+        }
     }
 }
 
