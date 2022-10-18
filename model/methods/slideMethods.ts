@@ -1,4 +1,4 @@
-import {ApplicationState, Presentation, Slide, SlideObject} from "../types";
+import {ApplicationState, Presentation, Slide, ISlideObject} from "../types";
 
 function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
     const newSlide = {

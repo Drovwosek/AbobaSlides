@@ -39,20 +39,20 @@ function isSelection(object: any): object is Selection {
 
 type Slide = {
 	id: string,
-	objects: Array<SlideObject>,
+	objects: Array<ISlideObject>,
 	background: string,
 }
 
 function isSlide(object: any): object is Slide {
 	const hasId = typeof object.id === 'string'
-	const hasObjects = isArrayOf<SlideObject>(object.slides, isSlideObject)
+	const hasObjects = isArrayOf<ISlideObject>(object.slides, isSlideObject)
 	const hasBackground = typeof object.background == 'string'
 
 	return hasId && hasObjects && hasBackground
 }
 
 /*!ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
-interface SlideObject {
+interface ISlideObject { // I - inteaface
 	id: string,
 	width: number,
 	height: number,
@@ -60,7 +60,7 @@ interface SlideObject {
 	y: number,
 }
 
-function isSlideObject(object: any): object is SlideObject {
+function isSlideObject(object: any): object is ISlideObject {
 	const hasId = typeof object.id === 'string'
 	const hasWidth = typeof object.width === 'number'
 	const hasHeight = typeof object.height === 'number'
@@ -70,7 +70,7 @@ function isSlideObject(object: any): object is SlideObject {
 	return hasId && hasWidth && hasHeight && hasX && hasY
 }
 
-type Textbox = SlideObject & {
+type Textbox = ISlideObject & {
 	textColor: string,
 	backgroundColor: string,
 	text: string,
@@ -78,6 +78,24 @@ type Textbox = SlideObject & {
 	textSize: number,
 	textStyle: 'bold' | 'italic' | 'underlined' | 'normal',
 	alignment: 'left' | 'center' | 'right',
+}
+
+function createTextbox(): Textbox{
+	return {
+		id: "8===>",
+		width: 100,
+		height: 100,
+		x: 250,
+		y: 250,
+
+		textColor: "#000",
+		backgroundColor: "#fff",
+		text: "yoBA",
+		font: "IBM Plex",
+		textSize: 36,
+		textStyle:  'normal',
+		alignment: 'left',
+	}
 }
 
 function isTextbox(object: any): object is Textbox {
@@ -92,11 +110,27 @@ function isTextbox(object: any): object is Textbox {
 	return isSlideObject(object) && hasTextColor && hasBackgroundColor && hasText && hasFont && hasTextSize && hasTextStyle && hasAlignment
 }
 
-type Figure = SlideObject & {
+type FigureType = 'ellipse' | 'triangle' | 'rectangle'
+
+type Figure = ISlideObject & { //I - interface
 	color: string,
 	strokeColor: string,
 	opacity: number,
-	type: 'circle' | 'triangle' | 'rectangle',
+	type: FigureType,
+}
+
+function createFigure(figureType: FigureType): Figure{
+	return {
+		id: "8===>",
+		width: 100,
+		height: 100,
+		x: 250,
+		y: 250,
+		color: "fff",
+		strokeColor: "dcdcdc",
+		opacity: 0,
+		type: figureType,
+	}
 }
 
 function isFigure(object: any): object is Figure {
@@ -108,7 +142,7 @@ function isFigure(object: any): object is Figure {
 	return isSlideObject(object) && hasColor && hasStrokeColor && hasOpacity && hasType
 }
 
-type Image = SlideObject & {
+type Image = ISlideObject & {
 	opacity: number,
 	src: string,
 }
@@ -125,16 +159,20 @@ export type {
 	Presentation,
 	SelectionData,
 	Slide,
-	SlideObject, //Obj -> SlideObject
+	ISlideObject,
+	FigureType,
 	Figure,
-	Image, //Img -> Image
+	Image,
 	Textbox,
 }
 
 export {
 	isPresentation,
+	createTextbox,
 	isTextbox,
+	createFigure,
 	isFigure,
 	isImage,
 	createEmptySelection,
+
 }

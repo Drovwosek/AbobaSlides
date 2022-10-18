@@ -1,19 +1,7 @@
-import {ApplicationState, Presentation} from "../types";
+import {ApplicationState, Figure, FigureType, Presentation, createFigure } from "../types";
+import {addSlideObject} from "./objectMethods";
 
-
-function addRectangle(app: ApplicationState): ApplicationState {
-
-    return app
+function addFigure(app: ApplicationState, figureType: FigureType, ): ApplicationState {
+    return addSlideObject(app, createFigure(figureType))
 }
 
-function addCircle(app: ApplicationState): ApplicationState {
-    return app
-}
-
-function addTriangle(app: ApplicationState): ApplicationState {
-    return app
-}
-
-function addFigure(app: ApplicationState): ApplicationState {
-    return app
-}

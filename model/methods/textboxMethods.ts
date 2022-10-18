@@ -1,7 +1,8 @@
-import {ApplicationState, Presentation} from "../types";
+import {ApplicationState, Presentation, createTextbox, Textbox, FigureType, createFigure} from "../types";
+import {addSlideObject} from "./objectMethods";
 
-function addTextbox(app: ApplicationState): ApplicationState {
-    return app
+function addTextbox(app: ApplicationState): Textbox {
+    return createTextbox()
 }
 
 function changeTextColor(app: ApplicationState): ApplicationState {

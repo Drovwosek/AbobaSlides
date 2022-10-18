@@ -1,4 +1,4 @@
-import {ApplicationState, Presentation} from "../types";
+import {ApplicationState, Presentation, ISlideObject} from "../types";
 
 function selectObject(app: ApplicationState): ApplicationState {
     return {
@@ -35,3 +35,13 @@ function removeObject(app: ApplicationState): ApplicationState { /*см выде
         ...app
     }
 }
+
+function addSlideObject(app: ApplicationState, slideObject: ISlideObject): ApplicationState { /*см выделенные и удаляй*/
+    return {
+        ...app
+    }
+}
+export {
+    addSlideObject,
+}
+
