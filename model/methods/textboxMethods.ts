@@ -1,25 +1,26 @@
-import {Presentation} from "../types";
+import {ApplicationState, Presentation} from "../types";
+import {newPresentation, newSlide, newCircle, newRectangle, newTextbox, newTriangle} from "../consts";
 
-function addTextbox(presentation: Presentation): Presentation {
-    return presentation
+function addTextbox(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function changeTextColor(presentation: Presentation): Presentation {
-    return presentation
+function changeTextColor(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function changeTextBackground(presentation: Presentation): Presentation {
-    return presentation
+function changeTextBackground(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function changeTextSize(presentation: Presentation): Presentation {
-    return presentation
+function changeTextSize(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function changeFont(presentation: Presentation): Presentation {
-    return presentation
+function changeFont(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function changeTextStyle(presentation: Presentation): Presentation {
-    return presentation
+function changeTextStyle(app: ApplicationState): ApplicationState {
+    return app
 }

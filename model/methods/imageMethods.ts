@@ -1,13 +1,9 @@
-import {Presentation} from "../types";
+import {ApplicationState, Presentation} from "../types";
 
-function addImage(presentation: Presentation): Presentation {
-    return presentation
+function addImage(app: ApplicationState, src: string): ApplicationState {
+    return app
 }
 
-function loadImage(presentation: Presentation): Presentation {
-    return presentation
-}
-
-function setImageAsBackground(presentation: Presentation): Presentation {
-    return presentation
+function setImageAsBackground(app: ApplicationState): ApplicationState {
+    return app
 }

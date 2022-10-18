@@ -1,16 +1,22 @@
-import {ApplicationState, Presentation, Slide} from "../types";
+import {ApplicationState, Presentation, Slide, SlideObject} from "../types";
+import {newPresentation, newSlide, newCircle, newRectangle, newTextbox, newTriangle} from "../consts";
 
-function addSlide(app: ApplicationState): ApplicationState {
+function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
+     newSlide
+
     return {
         ...app,
         presentation: {
             ...app.presentation,
-            slides: app.presentation.slides.slice(-1)
+            slides:[
+                ...app.presentation.slides,
+                newSlide,
+            ]
         }
     }
 }
 
-function deleteSlides(app: ApplicationState, Slide: Slide): ApplicationState { //
+function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState { //
     /* допишу после проверки addSlides*/
     return {
         ...app

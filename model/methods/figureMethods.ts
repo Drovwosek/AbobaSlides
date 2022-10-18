@@ -1,18 +1,22 @@
-import {Presentation} from "../types";
+import {ApplicationState, Presentation} from "../types";
+import {newPresentation, newSlide, newCircle, newRectangle, newTextbox, newTriangle} from "../consts";
 
-function addRectangle(presentation: Presentation): Presentation {
+function addRectangle(app: ApplicationState): ApplicationState {
+    newRectangle
 
-    return presentation
+
+    return app
+
 }
 
-function addCircle(presentation: Presentation): Presentation {
-    return presentation
+function addCircle(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function addTriangle(presentation: Presentation): Presentation {
-    return presentation
+function addTriangle(app: ApplicationState): ApplicationState {
+    return app
 }
 
-function addFigure(presentation: Presentation): Presentation {
-    return presentation
+function addFigure(app: ApplicationState): ApplicationState {
+    return app
 }

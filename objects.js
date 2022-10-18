@@ -45,4 +45,3 @@ const application = {
 	presentation: presentation,
 	selection: selection,
 }
-

@@ -1,19 +1,25 @@
-import {Presentation} from "../types";
+import {ApplicationState, Presentation} from "../types";
 
-function selectObject(presentation: Presentation): Presentation {
-    return presentation
+function selectObject(app: ApplicationState): ApplicationState {
+    return {
+        ...app
+    }
 }
 
-function unselectObject(presentation: Presentation): Presentation {
-    return presentation
+function unselectObject(app: ApplicationState): ApplicationState {
+    return {
+        ...app
+    }
 }
 
-interface MoveObjectPayload { /* получаем кончные коордианты из /события нажать отпустить/ */
+interface MoveObjectPayload { /* получаем конечные коордианты из /события нажать отпустить/ */
     x: number,
     y: number,
 }
-function moveObject(presentation: Presentation, payload: MoveObjectPayload): Presentation { /*вызов для каждого объекта в группе*/
-    return presentation
+function moveObject(app: ApplicationState, payload: MoveObjectPayload): ApplicationState { /*вызов для каждого объекта в группе*/
+    return {
+        ...app
+    }
 }
 
 interface ResizeObjectPayload { /* получаем кончные коордианты из /события нажать отпустить/ */
@@ -24,6 +30,8 @@ function resizeObject(presentation: Presentation, payload: ResizeObjectPayload):
     return presentation
 }
 
-function removeObject(presentation: Presentation): Presentation { /*см выделенные и удаляй*/
-    return presentation
+function removeObject(app: ApplicationState): ApplicationState { /*см выделенные и удаляй*/
+    return {
+        ...app
+    }
 }
