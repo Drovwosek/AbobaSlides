@@ -1,5 +1,4 @@
 import {ApplicationState, Presentation} from "../types";
-import {newPresentation, newSlide, newCircle, newRectangle, newTextbox, newTriangle} from "../consts";
 
 function addTextbox(app: ApplicationState): ApplicationState {
     return app

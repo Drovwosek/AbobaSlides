@@ -1,8 +1,11 @@
 import {ApplicationState, Presentation, Slide, SlideObject} from "../types";
-import {newPresentation, newSlide, newCircle, newRectangle, newTextbox, newTriangle} from "../consts";
 
 function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
-     newSlide
+    const newSlide = {
+        id: '',
+        objects: [],
+        background: ''
+    }
 
     return {
         ...app,
@@ -16,8 +19,8 @@ function addSlide(app: ApplicationState): ApplicationState { //декларат�
     }
 }
 
-function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState { //
-    /* допишу после проверки addSlides*/
+function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState { //Pablo
+
     return {
         ...app,
         presentation: {
@@ -29,13 +32,16 @@ function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState 
 
 function moveSlides(app: ApplicationState): ApplicationState {
     /* допишу после проверки addSlides*/
+    /*Выделяю слайд<>
+    * Перемещаю его на то место, где будет находиться указатель
+    * отпускаю - слайд<> падает на место указателя
+    * */
     return {
         ...app
     }
 }
 
 function selectSlide(app: ApplicationState, slideId: string): ApplicationState {
-    /*обработка события*/
     return {
         ...app,
         selection: {
@@ -46,8 +52,12 @@ function selectSlide(app: ApplicationState, slideId: string): ApplicationState {
 }
 
 function unselectSlide(app: ApplicationState): ApplicationState {
-    /*обработка события*/
     //спорная хуйня
+    /*Сейчас сбрасывает всё выделение со слайдов + объектов
+    *  +@ Снять выделение с 1 слайда
+    *  +@ Оставить выделение на 1 слайде(выбранном)
+    *  -@ Снять выделение со всех слайдов
+    * */
     return {
         ...app,
         selection: {
