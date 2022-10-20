@@ -1,5 +1,6 @@
 import {isArrayOf, isArrayOfString} from "../core/Array";
 
+/*чтобы не выгружать выделенные дела с презентацией*/
 type ApplicationState = {
 	presentation: Presentation,
 	selection: SelectionData,
@@ -10,7 +11,7 @@ type Presentation = {
 	slides: Array<Slide>,
 }
 
-function isPresentation(object: any): object is Presentation {
+function isPresentation(object: any): object is Presentation {/*тайпгард смлекция*/
 	const hasName = typeof object.name === 'string'
 	const hasSlides = isArrayOf<Slide>(object.slides, isSlide)
 	const hasSelection = isSelection(object.selection)
@@ -51,7 +52,7 @@ function isSlide(object: any): object is Slide {
 	return hasId && hasObjects && hasBackground
 }
 
-/*!ОСТОРОЖНО! ПРИМЕНЯЕТСЯ НАСЛЕДОВАНИЕ*/
+/*!ОСТОРОЖНО! ПРИМЕНЯЕТСЯ ?НАСЛЕДОВАНИЕ?*/
 interface ISlideObject { // I - inteaface
 	id: string,
 	width: number,
@@ -142,7 +143,7 @@ function isFigure(object: any): object is Figure {
 	return isSlideObject(object) && hasColor && hasStrokeColor && hasOpacity && hasType
 }
 
-type Image = ISlideObject & {
+type Image = ISlideObject & { /*см фигму*/
 	opacity: number,
 	src: string,
 }
