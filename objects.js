@@ -6,29 +6,29 @@ const textbox = {
 	y: 20,
 	textColor: "#660c0c",
 	backgroundColor: "#fff",
-	text: "Abob",
+	text: "Aboba",
 	font: "Open Sans",
 	textSize: 1009,
-	textStyle: "Usual", //Bold, Italic, Underlined, Usual
+	textStyle: "Normal", //Bold, Italic, Underlined, Normal
 	alignment: "left",
 }
 
-const rect = {
+const rectangle = {
 	id: "2",
 	width: 100,
 	height: 200,
 	x: 10,
 	y: 20,
 	color: "#fff",
-	strokeColor: "#000",
+	strokeColor: "#dcdcdc",
 	opacity: 1,
 	type: "Rectangle"
 }
 
 const slide1 = {
-	objects: [textbox, rect],
+	objects: [textbox, rectangle],
 	id: "1",
-	background: "#FFF",
+	background: "#fff",
 }
 
 const selection = {
