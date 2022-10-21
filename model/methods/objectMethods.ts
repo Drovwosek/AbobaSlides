@@ -1,4 +1,6 @@
-import {ApplicationState, Presentation, ISlideObject} from "../types";
+import {ApplicationState} from "../types/Application";
+import {ISlideObject} from "../types/presentationTypes/slideObjects/ISlideObject";
+import {Presentation} from "../types/presentationTypes/Presentation";
 
 function selectObject(app: ApplicationState): ApplicationState {
     return {

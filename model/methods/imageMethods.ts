@@ -1,4 +1,4 @@
-import {ApplicationState, Presentation} from "../types";
+import {ApplicationState} from "../types/Application";
 
 function addImage(app: ApplicationState, src: string): ApplicationState {
     return app
