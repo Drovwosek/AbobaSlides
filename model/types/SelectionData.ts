@@ -1,15 +1,23 @@
 export type SelectionData = {
     slideIds: Array<string>,
-    objectIds: Array<string>
+    objectIds: Array<string>,
 }
 
-function createEmptySelection(): SelectionData { /*вынести в отдельный файл*/
+type SelectionConfig = {
+    slideIds?: Array<string>
+    objectIds?: Array<string>,
+}
+const defaultConfig: SelectionConfig = {
+    slideIds: [],
+    objectIds: [],
+}
+function createSelection(config: SelectionConfig = defaultConfig): SelectionData { /*вынести в отдельный файл*/
     return {
-        slideIds: [],
-        objectIds: []
+        slideIds: config.slideIds || [],
+        objectIds: config.objectIds || [],
     }
 }
 
 export {
-    createEmptySelection,
+    createSelection,
 }

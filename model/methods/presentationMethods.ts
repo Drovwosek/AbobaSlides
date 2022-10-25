@@ -1,5 +1,5 @@
 import {ApplicationState} from "../types/Application";
-import {createEmptySelection} from "../types/SelectionData";
+import {createSelection} from "../types/SelectionData";
 import {createPresentation, isPresentation} from "../types/presentationTypes/Presentation";
 
 function renamePresentation(app: ApplicationState, newName: string): ApplicationState {
@@ -26,6 +26,6 @@ function importPresentationJson(app: ApplicationState, json: string): Applicatio
 
     return {
         presentation: rawPresentation,
-        selection: createEmptySelection()
+        selection: createSelection()
     }
 }
