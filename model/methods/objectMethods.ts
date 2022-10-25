@@ -1,5 +1,9 @@
-import {ApplicationState, Figure, FigureType, Image, Presentation, Textbox} from "../types";
 import {ISlideObject} from "../types/presentationTypes/slideObjects/ISlideObject";
+import {ApplicationState} from "../types/Application";
+
+function addSlideObject(app: ApplicationState, object: ISlideObject) {
+    return app;
+}
 
 function selectObject(app: ApplicationState, object: ISlideObject): ApplicationState {
     return {
@@ -49,4 +53,13 @@ function removeObject(app: ApplicationState): ApplicationState { /*см выде
             slides: app.presentation.slides.filter()
         }
     }
+}
+
+export {
+    addSlideObject,
+    selectObject,
+    unselectObject,
+    moveObject,
+    resizeObject,
+    removeObject
 }
