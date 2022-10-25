@@ -1,6 +1,12 @@
 import {ApplicationState} from "../types/Application";
+import {Textbox} from "../types/presentationTypes/slideObjects/Textbox";
+import {Image} from "../types/presentationTypes/slideObjects/Image";
+import {Figure} from "../types/presentationTypes/slideObjects/Figure";
 import {ISlideObject} from "../types/presentationTypes/slideObjects/ISlideObject";
-import {Presentation} from "../types/presentationTypes/Presentation";
+
+function addSlideObject(app: ApplicationState, object: ISlideObject) : ApplicationState {
+    return app
+}
 
 function selectObject(app: ApplicationState, object: Textbox | Figure | Image): ApplicationState {
     return {
@@ -50,4 +56,13 @@ function removeObject(app: ApplicationState): ApplicationState { /*см выде
             slides: app.presentation.slides.filter()
         }
     }
+}
+
+export {
+    addSlideObject,
+    selectObject,
+    unselectObject,
+    moveObject,
+    resizeObject,
+    removeObject
 }
