@@ -1,5 +1,4 @@
 import {ApplicationState, Presentation, createTextbox, Textbox, FigureType, createFigure} from "../types";
-import {addSlideObject} from "./objectMethods";
 
 function addTextbox(app: ApplicationState): Textbox {
     return createTextbox()

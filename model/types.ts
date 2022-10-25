@@ -53,7 +53,7 @@ function isSlide(object: any): object is Slide {
 }
 
 /*!ОСТОРОЖНО! ПРИМЕНЯЕТСЯ ?НАСЛЕДОВАНИЕ?*/
-interface ISlideObject { // I - inteaface
+interface ISlideObject { // I - interface
 	id: string,
 	width: number,
 	height: number,

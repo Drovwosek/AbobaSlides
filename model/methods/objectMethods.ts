@@ -1,14 +1,22 @@
-import {ApplicationState, Presentation, ISlideObject} from "../types";
+import {ApplicationState, Figure, FigureType, Image, Presentation, Textbox} from "../types";
 
-function selectObject(app: ApplicationState): ApplicationState {
+function selectObject(app: ApplicationState, object: Textbox | Figure | Image): ApplicationState {
     return {
-        ...app
+        ...app,
+        selection: {
+            ...app.selection,
+            objectIds: app.selection.objectIds.concat(object.id)
+        }
     }
 }
 
-function unselectObject(app: ApplicationState): ApplicationState {
+function unselectObject(app: ApplicationState, object: Textbox | Figure | Image): ApplicationState {
     return {
-        ...app
+        ...app,
+        selection: {
+            ...app.selection,
+            objectIds: app.selection.objectIds.filter(id => id !== object.id)
+        }
     }
 }
 
@@ -26,22 +34,18 @@ interface ResizeObjectPayload { /* получаем кончные коорди�
     width: number,
     height: number,
 }
-function resizeObject(presentation: Presentation, payload: ResizeObjectPayload): Presentation {
-    return presentation
+function resizeObject(app: ApplicationState, payload: ResizeObjectPayload): ApplicationState {
+    return {
+        ...app
+    }
 }
 
 function removeObject(app: ApplicationState): ApplicationState { /*см выделенные и удаляй*/
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.filter()
+        }
     }
 }
-
-function addSlideObject(app: ApplicationState, slideObject: ISlideObject): ApplicationState { /*см выделенные и удаляй*/
-    return {
-        ...app
-    }
-}
-export {
-    addSlideObject,
-}
-

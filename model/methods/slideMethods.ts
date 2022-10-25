@@ -68,7 +68,7 @@ function unselectSlide(app: ApplicationState): ApplicationState {
     }
 }
 
-function setBackgroundSlide(app: ApplicationState): ApplicationState {
+function setBackgroundSlide(app: ApplicationState, background: string): ApplicationState {
 /*Залупаемся с объектами*/
     return {
         ...app

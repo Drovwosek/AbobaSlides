@@ -25,14 +25,24 @@ const rectangle = {
 	type: "Rectangle"
 }
 
+const image = {
+	id: "3",
+	width: 100,
+	height: 200,
+	x: 10,
+	y: 20,
+	opacity: 1,
+	src: "qwiue",
+}
+
 const slide1 = {
-	objects: [textbox, rectangle],
-	id: "1",
+	objects: [textbox, rectangle, image],
+	id: "qwafd4ww",
 	background: "#fff",
 }
 
 const selection = {
-	slideIds: ["1"],
+	slideIds: ["qwafd4ww"],
 	objectIds: ["2"],
 }
 
