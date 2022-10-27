@@ -7,3 +7,8 @@ function addImage(app: ApplicationState, src: string): ApplicationState {
 function setImageAsBackground(app: ApplicationState): ApplicationState {
     return app
 }
+
+export {
+    addImage,
+    setImageAsBackground,
+}
