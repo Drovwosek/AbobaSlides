@@ -1,4 +1,7 @@
-import {Presentation, Slide, Textbox, Image} from "./model/types";
+import {Slide} from "./model/types/presentationTypes/Slide";
+import {Textbox} from "./model/types/presentationTypes/slideObjects/Textbox";
+import {Image} from "./model/types/presentationTypes/slideObjects/Image";
+import {Presentation} from "./model/types/presentationTypes/Presentation";
 
 const textbox: Textbox = {
 	id: "1",
@@ -38,8 +41,7 @@ const secondSlide: Slide = {
 	background: "#000",
 }
 
-const presentation: Presentation =
-{
+const presentation: Presentation = {
 	name: "Presentation Example",
     slides: [firstSlide, secondSlide],
 	selection: {

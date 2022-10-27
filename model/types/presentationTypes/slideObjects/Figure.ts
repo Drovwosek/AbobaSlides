@@ -16,8 +16,8 @@ function createFigure(figureType: FigureType): Figure{
         height: 100,
         x: 250,
         y: 250,
-        color: "fff",
-        strokeColor: "dcdcdc",
+        color: "#fff",
+        strokeColor: "#dcdcdc",
         opacity: 0,
         type: figureType,
     }
@@ -32,7 +32,7 @@ function isFigure(object: any): object is Figure {
     return isSlideObject(object) && hasColor && hasStrokeColor && hasOpacity && hasType
 }
 
-export {
+export type {
     Figure,
     FigureType,
 }

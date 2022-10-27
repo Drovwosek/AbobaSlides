@@ -1,7 +1,7 @@
 import {isArrayOf} from "../../../core/Array";
 import {isSlide, Slide} from "./Slide";
 import {ApplicationState} from "../Application";
-import {createEmptySelection} from "../SelectionData";
+import {createSelection} from "../SelectionData";
 
 export type Presentation = {
     name: string,
@@ -15,13 +15,20 @@ function isPresentation(object: any): object is Presentation {/*тайпгард
     return hasName && hasSlides
 }
 
-function createPresentation(): ApplicationState {
+type PresentationConfig = {
+    name: string;
+}
+
+const defaultConfig: PresentationConfig = {
+    name: "New Presentation",
+}
+function createPresentation(config: PresentationConfig = defaultConfig): ApplicationState {
     return {
         presentation: {
-            name : "New presentation",
+            name: config.name,
             slides: [],
         },
-        selection: createEmptySelection()
+        selection: createSelection()
     }
 }
 
