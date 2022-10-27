@@ -2,6 +2,7 @@ import {Slide} from "./model/types/presentationTypes/Slide";
 import {Textbox} from "./model/types/presentationTypes/slideObjects/Textbox";
 import {Image} from "./model/types/presentationTypes/slideObjects/Image";
 import {Presentation} from "./model/types/presentationTypes/Presentation";
+import {ApplicationState} from "./model/types/Application";
 
 const textbox: Textbox = {
 	id: "1",
@@ -44,8 +45,13 @@ const secondSlide: Slide = {
 const presentation: Presentation = {
 	name: "Presentation Example",
     slides: [firstSlide, secondSlide],
+}
+
+
+const application: ApplicationState = {
+	presentation,
 	selection: {
-	    slideIds: ["3"],
+		slideIds: ["3"],
 		objectIds: ["2"],
 	},
 }
