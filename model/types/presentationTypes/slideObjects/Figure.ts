@@ -32,7 +32,7 @@ function isFigure(object: any): object is Figure {
     return isSlideObject(object) && hasColor && hasStrokeColor && hasOpacity && hasType
 }
 
-export {
+export type {
     Figure,
     FigureType,
 }
