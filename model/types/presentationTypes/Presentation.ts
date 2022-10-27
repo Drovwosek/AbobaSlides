@@ -18,6 +18,7 @@ function isPresentation(object: any): object is Presentation {/*тайпгард
 type PresentationConfig = {
     name: string;
 }
+
 const defaultConfig: PresentationConfig = {
     name: "New Presentation",
 }

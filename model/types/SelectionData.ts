@@ -7,6 +7,7 @@ type SelectionConfig = {
     slideIds?: Array<string>
     objectIds?: Array<string>,
 }
+
 const defaultConfig: SelectionConfig = {
     slideIds: [],
     objectIds: [],
