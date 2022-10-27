@@ -1,5 +1,20 @@
-import {ApplicationState, Figure, FigureType, Image, Presentation, Textbox} from "../types";
 import {ISlideObject} from "../types/presentationTypes/slideObjects/ISlideObject";
+import {ApplicationState} from "../types/Application";
+import {Slide} from "../types/presentationTypes/Slide";
+
+function addSlideObject(app: ApplicationState, object: ISlideObject) {
+    return {
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.map(slide => {
+                if (slide.id == app.selection.slideIds[app.selection.slides.length - 1]) {
+                    slide.objects.concat(object)
+                }
+            })
+        }
+    }
+}
 
 function selectObject(app: ApplicationState, object: ISlideObject): ApplicationState {
     return {
@@ -27,7 +42,20 @@ interface MoveObjectPayload { /* получаем конечные коорди�
 }
 function moveObject(app: ApplicationState, payload: MoveObjectPayload): ApplicationState { /*вызов для каждого объекта в группе*/
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.map(slide => {
+                if (slide.id in app.selection.slideIds) {
+                    slide.objects.map(obj => {
+                        if (obj.id in app.selection.objectIds) {
+                            obj.x += payload.x;
+                            obj.y += payload.y
+                        }
+                    })
+                }
+            })
+        }
     }
 }
 
@@ -46,7 +74,21 @@ function removeObject(app: ApplicationState): ApplicationState { /*см выде
         ...app,
         presentation: {
             ...app.presentation,
-            slides: app.presentation.slides.filter()
+            slides: app.presentation.slides.map(slide => {
+                slide.objects.filter(obj => !(obj.id in app.selection.objectIds))
+            })
+        },
+        selection: {
+            objectIds: []
         }
     }
+}
+
+export {
+    addSlideObject,
+    selectObject,
+    unselectObject,
+    moveObject,
+    resizeObject,
+    removeObject
 }

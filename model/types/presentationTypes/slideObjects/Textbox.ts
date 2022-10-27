@@ -1,12 +1,16 @@
 import {ISlideObject, isSlideObject} from "./ISlideObject";
 
-export type Textbox = ISlideObject & {
+type TextboxStyle = 'bold' | 'italic' | 'underlined' | 'normal'
+
+type TextboxAlignment = 'left' | 'center' | 'right'
+
+type Textbox = ISlideObject & {
     textColor: string,
     backgroundColor: string,
     text: string,
     font: string,
     textSize: number,
-    textStyle: 'bold' | 'italic' | 'underlined' | 'normal',
+    textStyle: TextboxStyle,
     alignment: 'left' | 'center' | 'right',
 }
 
@@ -17,12 +21,11 @@ function createTextbox(): Textbox {
         height: 100,
         x: 250,
         y: 250,
-
         textColor: "#000",
         backgroundColor: "#fff",
-        text: "yoBA",
-        font: "IBM Plex",
-        textSize: 36,
+        text: "",
+        font: "Times New Roman",
+        textSize: 10,
         textStyle:  'normal',
         alignment: 'left',
     }
@@ -38,6 +41,12 @@ function isTextbox(object: any): object is Textbox {
     const hasAlignment = typeof object.alignment === 'string'
 
     return isSlideObject(object) && hasTextColor && hasBackgroundColor && hasText && hasFont && hasTextSize && hasTextStyle && hasAlignment
+}
+
+export {
+    TextboxStyle,
+    TextboxAlignment,
+    Textbox
 }
 
 export {

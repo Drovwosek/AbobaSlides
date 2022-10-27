@@ -52,8 +52,7 @@ function selectSlide(app: ApplicationState, slideId: string): ApplicationState {
     }
 }
 
-function unselectSlide(app: ApplicationState): ApplicationState {
-    //спорная хуйня
+function unselectSlide(app: ApplicationState, slide: Slide): ApplicationState {
     /*Сейчас сбрасывает всё выделение со слайдов + объектов
     *  +@ Снять выделение с 1 слайда
     *  +@ Оставить выделение на 1 слайде(выбранном)
@@ -63,15 +62,21 @@ function unselectSlide(app: ApplicationState): ApplicationState {
         ...app,
         selection: {
             ...app.selection,
-            slideIds: [],
-            objectIds: [],
+            slideIds: app.selection.slideIds.filter(id => id !== slide.id)
         }
     }
 }
 
 function setBackgroundSlide(app: ApplicationState, background: string): ApplicationState {
-/*Залупаемся с объектами*/
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides: app.presentation.slides.map(slide => {
+                if (slide.id in app.selection.slideIds) {
+                    slide.background = background
+                }
+            } )
+        }
     }
 }
