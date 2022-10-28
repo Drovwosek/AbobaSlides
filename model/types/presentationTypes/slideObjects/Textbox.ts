@@ -43,7 +43,7 @@ function isTextbox(object: any): object is Textbox {
     return isSlideObject(object) && hasTextColor && hasBackgroundColor && hasText && hasFont && hasTextSize && hasTextStyle && hasAlignment
 }
 
-export {
+export type {
     TextboxStyle,
     TextboxAlignment,
     Textbox

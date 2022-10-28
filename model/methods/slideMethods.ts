@@ -1,5 +1,6 @@
 import {Slide} from "../types/presentationTypes/Slide";
 import {ApplicationState} from "../types/Application";
+import {SelectionData} from "../types/SelectionData";
 
 function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
     const newSlide = {
@@ -20,7 +21,7 @@ function addSlide(app: ApplicationState): ApplicationState { //декларат�
     }
 }
 
-function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState { //Pablo
+function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState {
 
     return {
         ...app,
@@ -31,14 +32,47 @@ function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState 
     }
 }
 
-function moveSlides(app: ApplicationState): ApplicationState {
+function moveSlides(app: ApplicationState, delta: number): ApplicationState {
     /* допишу после проверки addSlides*/
     /*Выделяю слайд<>
     * Перемещаю его на то место, где будет находиться указатель
     * отпускаю - слайд<> падает на место указателя
     * */
+    if (app.selection.slideIds.length !== 1) {
+        console.error(`Can not move multiple slides`)
+        return app
+    }
+
+    const selectedSlide = app.presentation.slides.find(slide => slide.id === app.selection.slideIds[0])
+    if (!selectedSlide) {
+        console.error(`selected slide not found`)
+        return app
+    }
+    const selectedSlideIndex = app.presentation.slides.indexOf(selectedSlide) + delta
+
+    let slides: Array<Slide> = []
+    for (var i = 0; i < app.presentation.slides.length; i++) {
+        if (i !== app.presentation.slides.indexOf(selectedSlide)) {
+            slides.push(app.presentation.slides[i])
+        }
+    }
+
+    if (selectedSlideIndex > app.presentation.slides.length) {
+        slides.push(selectedSlide)
+    } else {
+        if (selectedSlideIndex < 0) {
+            slides.unshift(selectedSlide)
+        } else {
+            slides.splice(selectedSlideIndex - 1, 0, selectedSlide)
+        }
+    }
+
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides,
+        }
     }
 }
 
@@ -73,9 +107,13 @@ function setBackgroundSlide(app: ApplicationState, background: string): Applicat
         presentation: {
             ...app.presentation,
             slides: app.presentation.slides.map(slide => {
-                if (slide.id in app.selection.slideIds) {
-                    slide.background = background
+                if (app.selection.slideIds.includes(slide.id)) {
+                    return {
+                        ...slide,
+                        background
+                    }
                 }
+                return slide
             } )
         }
     }
