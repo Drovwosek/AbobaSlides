@@ -1,4 +1,4 @@
-import {createTextbox, isTextbox, Textbox, TextboxStyle, TextboxAlignment} from "../types/presentationTypes/slideObjects/Textbox";
+import {createTextbox, isTextbox, Textbox, TextboxStyles, TextboxAlignment} from "../types/presentationTypes/slideObjects/Textbox";
 import {ApplicationState} from "../types/Application";
 import {addSlideObject} from "./objectMethods";
 import {SelectionData} from "../types/SelectionData";
@@ -8,29 +8,12 @@ function addTextbox(app: ApplicationState): ApplicationState {
 }
 
 function changeTextColor(app: ApplicationState, selectColor: string): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
                             textColor: selectColor,
@@ -50,34 +33,16 @@ function changeTextColor(app: ApplicationState, selectColor: string): Applicatio
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }
 
 function changeTextBackground(app: ApplicationState, backgroung: string): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
                             backgroundColor: backgroung,
@@ -97,34 +62,16 @@ function changeTextBackground(app: ApplicationState, backgroung: string): Applic
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }
 
 function changeTextSize(app: ApplicationState, size: number): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
                             textSize: size,
@@ -144,34 +91,16 @@ function changeTextSize(app: ApplicationState, size: number): ApplicationState {
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }
 
 function changeFont(app: ApplicationState, font: string): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
                             font: font,
@@ -190,38 +119,20 @@ function changeFont(app: ApplicationState, font: string): ApplicationState {
         presentation: {
             ...app.presentation,
             slides,
-        },
-        selection: newSelection,
+        }
     }
 }
 
-function changeTextStyle(app: ApplicationState, style: TextboxStyle): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
+function changeTextStyle(app: ApplicationState, styles: TextboxStyles): ApplicationState {
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
-                            textStyle: style,
+                            styles: styles,
                         }
                     }
                     return obj
@@ -238,34 +149,16 @@ function changeTextStyle(app: ApplicationState, style: TextboxStyle): Applicatio
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }
 
 function changeTextAlignment(app: ApplicationState, alignment: TextboxAlignment): ApplicationState {
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id) && isTextbox(obj)) {
+                    if (app.selection.objectIds.includes(obj.id) && isTextbox(obj)) {
                         return {
                             ...obj,
                             alignment: alignment,
@@ -285,6 +178,5 @@ function changeTextAlignment(app: ApplicationState, alignment: TextboxAlignment)
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }

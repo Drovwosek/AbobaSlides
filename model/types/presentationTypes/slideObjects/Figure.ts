@@ -17,7 +17,7 @@ function createFigure(figureType: FigureType): Figure{
         x: 250,
         y: 250,
         color: "#fff",
-        strokeColor: "#dcdcdc",
+        strokeColor: "#000",
         opacity: 0,
         type: figureType,
     }

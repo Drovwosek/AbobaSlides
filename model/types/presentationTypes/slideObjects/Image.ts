@@ -1,5 +1,5 @@
 import {ISlideObject, isSlideObject} from "./ISlideObject";
-import {Figure, FigureType} from "./Figure";
+
 
 export type Image = ISlideObject & { /*см фигму*/
     opacity: number,

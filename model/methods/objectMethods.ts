@@ -1,16 +1,10 @@
 import {ISlideObject} from "../types/presentationTypes/slideObjects/ISlideObject";
 import {ApplicationState} from "../types/Application";
-import {Slide} from "../types/presentationTypes/Slide";
 import {SelectionData} from "../types/SelectionData";
 
 function addSlideObject(app: ApplicationState, object: ISlideObject) {
-    if (app.selection.slideIds.length !== 1) {
-        console.error(`can not add object on multiple slides`)
-        return app
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (slide.id === app.selection.slideIds[0]) {
+        if (slide.id === app.selection.slideId) {
             return {
                 ...slide,
                 objects: slide.objects.concat(object)
@@ -53,29 +47,12 @@ interface MoveObjectPayload { /* получаем конечные коорди�
     y: number,
 }
 function moveObject(app: ApplicationState, payload: MoveObjectPayload): ApplicationState { /*вызов для каждого объекта в группе*/
-    const selectedSlideId = app.selection.slideIds[0]
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === selectedSlideId)
-    if (!selectedSlide) {
-        console.error(`selected slide not found`)
-        return app
-    }
-
-    const newSelection: SelectionData = {
-        slideIds: [selectedSlideId],
-        objectIds: app.selection.objectIds.map(id => {
-            if (selectedSlide.objects.find(obj => obj.id === id)) {
-                return id
-            }
-            return ''
-        }).filter(x => !!x)
-    }
-
     const slides = app.presentation.slides.map(slide => {
-        if (newSelection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (newSelection.objectIds.includes(obj.id)) {
+                    if (app.selection.objectIds.includes(obj.id)) {
                         return {
                             ...obj,
                             x: obj.x + payload.x,
@@ -95,11 +72,10 @@ function moveObject(app: ApplicationState, payload: MoveObjectPayload): Applicat
             ...app.presentation,
             slides,
         },
-        selection: newSelection,
     }
 }
 
-interface ResizeObjectPayload { /* получаем кончные коордианты из /события нажать отпустить/ */
+interface ResizeObjectPayload {
     width: number,
     height: number,
 }
@@ -110,7 +86,7 @@ function resizeObject(app: ApplicationState, payload: ResizeObjectPayload): Appl
     }
 
     const slides = app.presentation.slides.map(slide => {
-        if (app.selection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
@@ -129,13 +105,17 @@ function resizeObject(app: ApplicationState, payload: ResizeObjectPayload): Appl
     })
 
     return {
-        ...app
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides,
+        }
     }
 }
 
-function removeObject(app: ApplicationState): ApplicationState { /*см выделенные и удаляй*/
+function removeObject(app: ApplicationState): ApplicationState {
     const slides = app.presentation.slides.map(slide => {
-        if (app.selection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 objects: slide.objects.filter(obj => !(app.selection.objectIds.includes(obj.id)))

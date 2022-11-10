@@ -2,6 +2,9 @@ import {Slide} from "./model/types/presentationTypes/Slide";
 import {Textbox} from "./model/types/presentationTypes/slideObjects/Textbox";
 import {Image} from "./model/types/presentationTypes/slideObjects/Image";
 import {Presentation} from "./model/types/presentationTypes/Presentation";
+import {ApplicationState} from "./model/types/Application";
+import {SelectionData} from "./model/types/SelectionData";
+import {Figure} from "./model/types/presentationTypes/slideObjects/Figure";
 
 const textbox: Textbox = {
 	id: "1",
@@ -14,7 +17,11 @@ const textbox: Textbox = {
 	text: "Test text data",
 	font: "IBM Plex",
 	textSize: 18,
-	textStyle: 'bold',
+	styles: {
+		bold: false,
+		italic: true,
+		underlined: false,
+	},
 	alignment: "left",
 }
 
@@ -28,6 +35,17 @@ const image: Image = {
 	src: "base64encodedimage",
 }
 
+const rectangle: Figure = {
+	id: "2",
+	width: 100,
+	height: 200,
+	x: 10,
+	y: 20,
+	color: "#fff",
+	strokeColor: "#dcdcdc",
+	opacity: 1,
+	type: "rectangle"
+}
 
 const firstSlide: Slide = {
 	id: "3",
@@ -37,15 +55,21 @@ const firstSlide: Slide = {
 
 const secondSlide: Slide = {
 	id: "4",
-	objects: [],
+	objects: [rectangle],
 	background: "#000",
 }
 
 const presentation: Presentation = {
 	name: "Presentation Example",
     slides: [firstSlide, secondSlide],
-	selection: {
-	    slideIds: ["3"],
-		objectIds: ["2"],
-	},
+}
+
+const selection: SelectionData = {
+	slideId: "3",
+	objectIds: ["1"],
+}
+
+const app: ApplicationState = {
+	presentation: presentation,
+	selection: selection,
 }

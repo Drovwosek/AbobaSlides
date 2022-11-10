@@ -1,6 +1,6 @@
-import {Slide} from "../types/presentationTypes/Slide";
+import {ColorBackground, Slide} from "../types/presentationTypes/Slide";
 import {ApplicationState} from "../types/Application";
-import {SelectionData} from "../types/SelectionData";
+import {createSelection} from "../types/SelectionData";
 
 function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
     const newSlide = {
@@ -33,17 +33,7 @@ function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState 
 }
 
 function moveSlides(app: ApplicationState, delta: number): ApplicationState {
-    /* допишу после проверки addSlides*/
-    /*Выделяю слайд<>
-    * Перемещаю его на то место, где будет находиться указатель
-    * отпускаю - слайд<> падает на место указателя
-    * */
-    if (app.selection.slideIds.length !== 1) {
-        console.error(`Can not move multiple slides`)
-        return app
-    }
-
-    const selectedSlide = app.presentation.slides.find(slide => slide.id === app.selection.slideIds[0])
+    const selectedSlide = app.presentation.slides.find(slide => slide.id === app.selection.slideId)
     if (!selectedSlide) {
         console.error(`selected slide not found`)
         return app
@@ -51,13 +41,13 @@ function moveSlides(app: ApplicationState, delta: number): ApplicationState {
     const selectedSlideIndex = app.presentation.slides.indexOf(selectedSlide) + delta
 
     let slides: Array<Slide> = []
-    for (var i = 0; i < app.presentation.slides.length; i++) {
+    for (let i = 0; i < app.presentation.slides.length; i++) {
         if (i !== app.presentation.slides.indexOf(selectedSlide)) {
             slides.push(app.presentation.slides[i])
         }
     }
 
-    if (selectedSlideIndex > app.presentation.slides.length) {
+    if (selectedSlideIndex > app.presentation.slides.length - 1) {
         slides.push(selectedSlide)
     } else {
         if (selectedSlideIndex < 0) {
@@ -76,38 +66,30 @@ function moveSlides(app: ApplicationState, delta: number): ApplicationState {
     }
 }
 
-function selectSlide(app: ApplicationState, slideId: string): ApplicationState {
+function selectSlide(app: ApplicationState, slide: Slide): ApplicationState {
     return {
         ...app,
         selection: {
             ...app.selection,
-            slideIds: app.selection.slideIds.concat(slideId)
+            slideId: slide.id,
         }
     }
 }
 
 function unselectSlide(app: ApplicationState, slide: Slide): ApplicationState {
-    /*Сейчас сбрасывает всё выделение со слайдов + объектов
-    *  +@ Снять выделение с 1 слайда
-    *  +@ Оставить выделение на 1 слайде(выбранном)
-    *  -@ Снять выделение со всех слайдов
-    * */
     return {
         ...app,
-        selection: {
-            ...app.selection,
-            slideIds: app.selection.slideIds.filter(id => id !== slide.id)
-        }
+        selection: createSelection(),
     }
 }
 
-function setBackgroundSlide(app: ApplicationState, background: string): ApplicationState {
+function setBackgroundSlide(app: ApplicationState, background: ColorBackground): ApplicationState {
     return {
         ...app,
         presentation: {
             ...app.presentation,
             slides: app.presentation.slides.map(slide => {
-                if (app.selection.slideIds.includes(slide.id)) {
+                if (app.selection.slideId === slide.id) {
                     return {
                         ...slide,
                         background

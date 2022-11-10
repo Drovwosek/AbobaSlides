@@ -9,7 +9,7 @@ function addImage(app: ApplicationState, src: string): ApplicationState {
 
 function setImageAsBackground(app: ApplicationState, src: string): ApplicationState {
     const slides = app.presentation.slides.map(slide => {
-        if (app.selection.slideIds.includes(slide.id)) {
+        if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
                 background: {
