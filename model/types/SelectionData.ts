@@ -12,7 +12,7 @@ const defaultConfig: SelectionConfig = {
     slideId: '',
     objectIds: [],
 }
-function createSelection(config: SelectionConfig = defaultConfig): SelectionData { /*вынести в отдельный файл*/
+function createSelection(config: SelectionConfig = defaultConfig): SelectionData {
     return {
         slideId: config.slideId || '',
         objectIds: config.objectIds || [],

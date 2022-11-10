@@ -27,6 +27,7 @@ function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState 
         ...app,
         presentation: {
             ...app.presentation,
+
             slides: app.presentation.slides.slice(0, app.presentation.slides.length - 1)
         }
     }

@@ -1,0 +1,16 @@
+.slide {
+  box-sizing: border-box;
+
+  display: flex;
+  position: absolute;
+  width: 1200px;
+  height: 674px;
+  left: 360px;
+  top: 143px;
+  min-height: 100px;
+  min-width: 60px;
+
+  background: #FFFFFF;
+  border: 0.7px solid #DCDCDC;
+  border-radius: 15px;
+}
