@@ -1,20 +1,20 @@
 export type SelectionData = {
-    slideIds: Array<string>,
+    slideId: string,
     objectIds: Array<string>,
-}
+}/*массив объектов при выделенных слайдов?*/
 
 type SelectionConfig = {
-    slideIds?: Array<string>
+    slideId?: string,
     objectIds?: Array<string>,
 }
 
 const defaultConfig: SelectionConfig = {
-    slideIds: [],
+    slideId: '',
     objectIds: [],
 }
 function createSelection(config: SelectionConfig = defaultConfig): SelectionData { /*вынести в отдельный файл*/
     return {
-        slideIds: config.slideIds || [],
+        slideId: config.slideId || '',
         objectIds: config.objectIds || [],
     }
 }

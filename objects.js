@@ -9,7 +9,9 @@ const textbox = {
 	text: "Aboba",
 	font: "Open Sans",
 	textSize: 1009,
-	textStyle: "Normal", //Bold, Italic, Underlined, Normal
+	bold: false,
+	italic: false,
+	underlined: false,
 	alignment: "left",
 }
 
@@ -47,7 +49,7 @@ const selection = {
 }
 
 const presentation = {
-	slides: [slide1],
+	slides: slide1.id,
 	name: "AbobaPresa",
 }
 

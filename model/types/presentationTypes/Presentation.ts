@@ -16,7 +16,7 @@ function isPresentation(object: any): object is Presentation {/*тайпгард
 }
 
 type PresentationConfig = {
-    name: string;
+    name?: string;
 }
 
 const defaultConfig: PresentationConfig = {
@@ -25,7 +25,7 @@ const defaultConfig: PresentationConfig = {
 function createPresentation(config: PresentationConfig = defaultConfig): ApplicationState {
     return {
         presentation: {
-            name: config.name,
+            name: config.name || "NewPresentation",
             slides: [],
         },
         selection: createSelection()
