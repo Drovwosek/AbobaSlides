@@ -1,0 +1,50 @@
+.rect
+{
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.dotLeftTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    color: "#fbfbfb";
+    cursor: pointer;
+}
+
+.dotRightTop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    color: "#fbfbfb";
+    cursor: pointer;
+}
+
+.dotRightBottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    color: "#fbfbfb";
+    cursor: pointer;
+}
+
+.dotLeftBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    color: "#fbfbfb";
+    cursor: pointer;
+}

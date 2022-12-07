@@ -1,5 +1,7 @@
+import {generateId} from "./core/IdGenerater";
+
 const textbox = {
-	id: "1",
+	id: generateId(),
 	width: 100,
 	height: 200,
 	x: 10,
@@ -16,7 +18,7 @@ const textbox = {
 }
 
 const rectangle = {
-	id: "2",
+	id: generateId(),
 	width: 100,
 	height: 200,
 	x: 10,
@@ -28,7 +30,7 @@ const rectangle = {
 }
 
 const image = {
-	id: "3",
+	id: generateId(),
 	width: 100,
 	height: 200,
 	x: 10,
@@ -39,21 +41,31 @@ const image = {
 
 const slide1 = {
 	objects: [textbox, rectangle, image],
-	id: "qwafd4ww",
+	id: generateId(),
 	background: "#fff",
 }
 
 const selection = {
-	slideIds: ["qwafd4ww"],
-	objectIds: ["2"],
+	slideId: slide1.id,
+	objectIds: [image.id],
 }
 
 const presentation = {
-	slides: slide1.id,
+	slides: [slide1],
 	name: "AbobaPresa",
 }
 
 const application = {
 	presentation: presentation,
 	selection: selection,
+}
+
+export {
+	application,
+	presentation,
+	selection,
+	slide1,
+	image,
+	rectangle,
+	textbox,
 }
