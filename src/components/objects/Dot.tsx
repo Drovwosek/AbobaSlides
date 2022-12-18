@@ -21,27 +21,6 @@ function Dot(props: DotProps) {
         default:
             break;
     }
-    if (props.type === "LeftTop") {
-        style = styles.dotLeftTop
-    } 
-    else 
-    {
-        if (props.type === "LeftBottom") {
-            style = styles.dotLeftBottom
-        } 
-        else
-        {
-            if (props.type === "RightTop") {
-                style = styles.dotRightTop
-            }
-            else
-            {
-                if (props.type === "RightBottom") {
-                    style = styles.dotRightBottom
-                }
-            }
-        } 
-    }
 
     return (
         <div className={style}
