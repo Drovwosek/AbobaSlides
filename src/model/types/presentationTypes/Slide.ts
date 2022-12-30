@@ -1,5 +1,26 @@
 import {isArrayOf} from "../../../core/Array";
 import {ISlideObject, isSlideObject} from "./slideObjects/ISlideObject";
+import { generateId } from "../../../actions/IdGenerater";
+
+type SlideConfig = {
+    id?: string,
+    objects?: Array<ISlideObject>,
+    background?: ImageBackground | ColorBackground,
+}
+
+const defaultSlideConfig: SlideConfig = {
+    id: generateId(),
+    objects: [],
+    background: '#FFF',
+}
+
+function createSlide(config: SlideConfig = defaultSlideConfig): Slide {
+    return {
+        id: config.id || generateId(),
+        objects: config.objects || [],
+        background: config.background || '#FFF',
+    }
+}
 
 type ColorBackground = string
 
@@ -35,4 +56,6 @@ export type {
 
 export {
     isSlide,
+    isImageBackground,
+    createSlide,
 }

@@ -1,31 +1,60 @@
 import React from 'react';
-import './App.css';
-import Slide from '../Slide/Slide';
-import SlideList from '../SlideList/SlideList';
-import {Slide as SlideType} from '../../model/types/presentationTypes/Slide';
+import styles from './App.module.css';
+import Slide from '../components/Slide/Slide';
+import SlideList from '../components/SlideList/SlideList';
+import {createSlide, Slide as SlideType} from '../../src/model/types/presentationTypes/Slide';
+import {ApplicationState} from "../../src/model/types/Application";
+import {TopBar} from '../components/TopBar/TopBar';
 
-const mockSlides: SlideType[] = [{
-    id: '1',
-    objects: [],
-    background: 'blue',
-}, {
-    id: '2',
-    objects: [],
-    background: 'yellow',
-}]
+type AppProps = {
+    app: ApplicationState,
+}
 
-function App() {
+function getSlide(app: ApplicationState): SlideType {
+    let slide
+
+    if (app.selection.slideId)
+    {
+        slide = app.presentation.slides.find(slide => slide.id === app.selection.slideId)
+        if (slide !== undefined)
+        {
+            return slide
+        }
+        else
+        {
+            slide = createSlide()
+        }
+    }
+    else
+    {
+        slide = createSlide()
+    }
+
+    return slide
+}
+
+function App(props: AppProps) {
     return (
-        <div className="App">
-            <Slide/>
-            <SlideList slides={mockSlides}/>
+        <div className = {styles.app}>
+            <TopBar/>
+            <div className={styles.slideContainer}>
+                <input
+                    className={styles.namePresentation} 
+                    defaultValue={props.app.presentation.name}
+                />
+                <Slide 
+                    slide={getSlide(props.app)} 
+                    selectObjectIds={props.app.selection.objectIds}
+                />
+            </div>
+            <div className={styles.slideListContainer}>
+                <SlideList
+                    slides={props.app.presentation.slides}
+                />
+            </div>
+           
         </div>
     );
 }
 
 export default App;
-
-
-//хочу сделать как в фигме. Где писать код?
-
-//Какого рода код будет писаться? Надо пример очень

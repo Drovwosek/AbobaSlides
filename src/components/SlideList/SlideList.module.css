@@ -1,16 +1,29 @@
-.slide {
-  box-sizing: border-box;
-
+.slideList {
   display: flex;
-  position: absolute;
-  width: 1200px;
-  height: 674px;
-  left: 360px;
-  top: 143px;
-  min-height: 100px;
-  min-width: 60px;
-
+  flex-direction: row;
+  width: 100%;
+  height: 230px;
   background: #FFFFFF;
-  border: 0.7px solid #DCDCDC;
+  border: 1px #dfdfdf;
   border-radius: 15px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  position: relative;
+  width: 20%;
+  height: 88%;
+  margin-top: 1%;
+  margin-left: 3%;
+  border-radius: 15% ;
+}
+
+.thumbnail > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(0.3);
+  pointer-events: none;
+  user-select: none;
+  transform-origin: left top;
 }

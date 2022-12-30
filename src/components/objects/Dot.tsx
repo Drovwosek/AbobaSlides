@@ -12,35 +12,18 @@ function Dot(props: DotProps) {
     switch (props.type) {
         case "LeftTop":
             style = styles.dotLeftTop;
+            break;
         case "LeftBottom":
             style = styles.dotLeftBottom;
+            break;
         case "RightTop":
             style = styles.dotRightTop;
+            break;
         case "RightBottom":
-            style = styles.dotRightBottom;    
+            style = styles.dotRightBottom;
+            break;    
         default:
             break;
-    }
-    if (props.type === "LeftTop") {
-        style = styles.dotLeftTop
-    } 
-    else 
-    {
-        if (props.type === "LeftBottom") {
-            style = styles.dotLeftBottom
-        } 
-        else
-        {
-            if (props.type === "RightTop") {
-                style = styles.dotRightTop
-            }
-            else
-            {
-                if (props.type === "RightBottom") {
-                    style = styles.dotRightBottom
-                }
-            }
-        } 
     }
 
     return (

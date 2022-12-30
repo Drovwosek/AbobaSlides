@@ -1,18 +1,39 @@
-import React from 'react';
-import './SlideList.css';
-import type {Slide as SlideType} from '../../model/types/presentationTypes/Slide';
+import React, {ReactNode} from 'react';
+import styles from './SlideList.module.css';
+import type {Slide as SlideData} from '../../../src/model/types/presentationTypes/Slide';
 import Slide from '../Slide/Slide';
 
-type SlideListProps = {
-    slides: SlideType[],
+type SlideThumbnailProps = {
+    slide: SlideData,
+    selectionObjectIds: Array<string>,
 }
 
-function SlideList(props: SlideListProps) {
+function SlideThumbnail(props: SlideThumbnailProps) {
     return (
-        <div className="slide-list">
-            {props.slides.map(slide => (
-                <Slide key={slide.id}/>
-            ))}
+        <div className={styles.thumbnail}>
+            <Slide slide={props.slide}
+                selectObjectIds={props.selectionObjectIds}
+            />
+        </div>
+    );
+}
+
+function getSlides(slides: Array<SlideData>): Array<ReactNode> {
+    return slides.map(slideData => {
+        return (
+            <SlideThumbnail key={slideData.id} slide={slideData} selectionObjectIds={[]} />
+        )
+    })
+}
+
+type SlideListProps = {
+    slides: Array<SlideData>,
+}
+
+function SlideList({slides}: SlideListProps) {
+    return (
+        <div className={styles.slideList}>
+            {getSlides(slides)}
         </div>
     );
 }
