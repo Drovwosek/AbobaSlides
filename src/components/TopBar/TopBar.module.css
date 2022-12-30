@@ -1,0 +1,98 @@
+.topBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+}
+
+.presentationBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 5%;
+    width: 8%;
+    height: 85%;
+}
+
+.slideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 1.5%;
+    width: 4%;
+    height: 85%;
+}
+
+.textBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 1.5%;
+    width: 20%;
+    height: 85%;
+}
+
+.figuresBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 1.5%;
+    width: 5%;
+    height: 85%;
+}
+
+.imageBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 1.5%;
+    width: 3.5%;
+    height: 85%;
+}
+
+.barName {
+    font-family: "IBM Plex Sans Condensed";
+    color: rgb(49, 43, 43);
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.barActions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.icon {
+    width: 25px;
+}
+
+.separator {
+    height: 85%;
+    width: 0.3%;
+    border-radius: 5%;
+    background-color: #bebebe;
+    margin-left: 1.5%;
+}
+
+.listFonts {
+    width: 100px;
+    height: 25px;
+    overflow: hidden;
+    font-family: "IBM Plex Sans Condensed";
+    font-size: 18px;
+}
+
+.listSizeFonts {
+    width: 45px;
+    height: 25px;
+    overflow: hidden;
+    font-size: 18px;
+}
