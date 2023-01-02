@@ -1,4 +1,4 @@
-import {generateId} from "./core/IdGenerater";
+import {generateId} from "./actions/IdGenerater";
 
 const textbox = {
 	id: generateId(),
