@@ -15,6 +15,7 @@ function Textbox(props: TextboxProps) {
               width={props.textbox.width}
               height={props.textbox.height}
               selected={props.selected}
+              objectId={props.textbox.id}
         >
             <textarea className={styles.textbox}
                 style={{
@@ -24,7 +25,7 @@ function Textbox(props: TextboxProps) {
                     fontSize: `${props.textbox.textSize}px`,
                     fontWeight: (props.textbox.styles.bold) ? "bold" : "normal",
                     fontStyle: (props.textbox.styles.italic) ? "italic" : "normal",
-                    textDecoration: (props.textbox.styles.underlined) ? "underline" : "normal",
+                    textDecoration: (props.textbox.styles.underlined) ? "underline" : "",
                     textAlign: props.textbox.alignment,
                 }}
                 defaultValue={props.textbox.text}

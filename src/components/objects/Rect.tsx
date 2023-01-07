@@ -1,6 +1,8 @@
 import styles from "./Rect.module.css";
-import React, {ReactNode} from "react";
+import React, {ReactNode, useState} from "react";
 import {Dot} from "./Dot";
+import { moveObject, selectObject, unselectObject } from "../../store/actionCreators";
+import store from "../../store/store";
 
 type RectProps = {
     x: number | 0,
@@ -8,10 +10,12 @@ type RectProps = {
     width: number,
     height: number,
     selected: boolean,
+    objectId: string,
     children?: ReactNode,
 }
 
 function Rect(props: RectProps) {
+    const [select, setSelect] = useState(false)
     return (
         <div className={styles.rect} style={{
             left: props.x,
@@ -19,6 +23,17 @@ function Rect(props: RectProps) {
             width: props.width,
             height: props.height,
             border: props.selected ? "1px dashed #000" : "",
+        }}
+        onClick={() => {
+            if (select) {
+                store.dispatch(unselectObject(props.objectId))
+                setSelect(false)
+            } else {
+                store.dispatch(selectObject(props.objectId))
+                setSelect(true)
+            }
+            console.log(props.objectId)
+            store.getState().selection.objectIds.forEach(id => {console.log(id)})
         }}
         >
             <Dot selected={props.selected}

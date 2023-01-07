@@ -58,10 +58,13 @@ function FigureView(props: FigureProps) {
             width={props.figure.width}
             height={props.figure.height}
             selected={props.selected}
+            objectId={props.figure.id}
         >
             <svg xmlns="http://www.w3.org/2000/svg"
                  width={'100%'}
-                 height={'100%'}>
+                 height={'100%'}
+                 style={{opacity: props.figure.opacity}}
+                 >
                 {getTypeFigure(props.figure.width, props.figure.height, props.figure.type, props.figure.color, props.figure.strokeColor, props.figure.opacity)}
             </svg>
         </Rect>

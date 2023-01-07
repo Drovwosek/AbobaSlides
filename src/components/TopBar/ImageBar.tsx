@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import styles from "./TopBar.module.css";
 import IconAddImage from "../../images/addImage.svg";
 import store from "../../store/store";
-import { changeOpacity } from "../../store/actionCreators";
+import { changeOpacity, createImage } from "../../store/actionCreators";
+import { loadImageFromDisk, imageUrlToBase64 } from "../../core/ImageLoader";
 
 export function ImageBar() {
     const [opacity, setOpacity] = useState('100')
@@ -11,7 +12,7 @@ export function ImageBar() {
         <div className={styles.imageBar}>
             <p className={styles.barName}>Image</p>
             <div className={styles.barActions}>
-                <img className={styles.icon} src={IconAddImage} alt="" />
+                <img className={styles.icon} src={IconAddImage} alt="" onClick={() => {}}/>
                 <select className={styles.listOpacity} value={opacity}
                         onChange={event => {
                             setOpacity(event.target.value)

@@ -6,14 +6,19 @@ import {createSlide, Slide as SlideType} from '../../src/model/types/presentatio
 import {ApplicationState} from "../../src/model/types/Application";
 import {TopBar} from '../components/TopBar/TopBar';
 import store from '../store/store';
-import { addSlide, changePresentationTitle, selectSlide} from '../store/actionCreators';
+import { addSlide, changePresentationTitle, selectSlide, createSlide as createSlideAction } from '../store/actionCreators';
+import {connect} from 'react-redux'
 
-function getSlide(app: ApplicationState): SlideType {
+type AppProps = {
+    app: ApplicationState,
+}
+
+function getSlide(): SlideType {
     let slide
 
-    if (app.selection.slideId)
+    if (store.getState().selection.slideId)
     {
-        slide = app.presentation.slides.find(slide => slide.id === app.selection.slideId)
+        slide = store.getState().presentation.slides.find(slide => slide.id === store.getState().selection.slideId)
         if (slide !== undefined)
         {
             return slide
@@ -35,8 +40,8 @@ function getSlide(app: ApplicationState): SlideType {
     return slide
 }
 
-function App() {
-    const [title, setTitle] = useState() 
+function App(props: any) {
+    const [title, setTitle] = useState(store.getState().presentation.name) 
 
     return (
         <div 
@@ -50,11 +55,12 @@ function App() {
                     className={styles.namePresentation} 
                     defaultValue={store.getState().presentation.name}
                     onChange={event => {
+                        setTitle(event.target.value)
                         store.dispatch(changePresentationTitle(event.target.value))
                     }}
                 />
                 <Slide 
-                    slide={getSlide(store.getState())} 
+                    slide={getSlide()} 
                     selectObjectIds={store.getState().selection.objectIds}
                 />
             </div>
@@ -64,6 +70,18 @@ function App() {
         </div>
     );
 }
+
+const mapStateToProps = (state: any) => ({app: state})
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        addSlide: (slide: any) => dispatch(addSlide(slide)),
+        createSlide: () => dispatch(createSlide()),
+        
+    }
+}
+
+export default connect(mapStateToProps)(App)
 
 export {
     App,

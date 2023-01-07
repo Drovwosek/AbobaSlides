@@ -14,6 +14,7 @@ function Image(props: ImageProps) {
               width={props.image.width}
               height={props.image.height}
               selected={props.selected}
+              objectId={props.image.id}
         >
             <img className={styles.image}
                  src={props.image.src}

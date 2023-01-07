@@ -55,20 +55,20 @@ export function TextBar() {
                 <div>
                     <img className={styles.icon} src={IconBoldText} alt=""
                         onClick={() => {
+                            store.dispatch(changeTextStyle({bold: !boldStyle, italic: italicStyle, underlined: underlineStyle}))
                             setBoldStyle(!boldStyle)
-                            store.dispatch(changeTextStyle({bold: boldStyle, italic: italicStyle, underlined: underlineStyle}))
                         }} 
                     />
                     <img className={styles.icon} src={IconItalicText} alt=""
                         onClick={() => {
-                            setItalicStyle(!italicStyle)
-                            store.dispatch(changeTextStyle({bold: boldStyle, italic: italicStyle, underlined: underlineStyle}))
+                            store.dispatch(changeTextStyle({bold: boldStyle, italic: !italicStyle, underlined: underlineStyle}))
+                            setItalicStyle(!italicStyle)                            
                         }} 
                     />
                     <img className={styles.icon} src={IconUnderlineText} alt=""
                      onClick={() => {
+                            store.dispatch(changeTextStyle({bold: boldStyle, italic: italicStyle, underlined: !underlineStyle}))
                             setUnderlineStyle(!underlineStyle)
-                            store.dispatch(changeTextStyle({bold: boldStyle, italic: italicStyle, underlined: underlineStyle}))
                         }}  
                     />
                 </div>
