@@ -42,7 +42,7 @@ function unselectObject(app: ApplicationState, object: ISlideObject): Applicatio
     }
 }
 
-interface MoveObjectPayload { /* получаем конечные коордианты из /события нажать отпустить/ */
+export interface MoveObjectPayload { /* получаем конечные коордианты из /события нажать отпустить/ */
     x: number,
     y: number,
 }
@@ -75,7 +75,7 @@ function moveObject(app: ApplicationState, payload: MoveObjectPayload): Applicat
     }
 }
 
-interface ResizeObjectPayload {
+export interface ResizeObjectPayload {
     width: number,
     height: number,
 }

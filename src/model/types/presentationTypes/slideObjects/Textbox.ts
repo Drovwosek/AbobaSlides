@@ -1,3 +1,4 @@
+import { generateId } from "../../../../actions/IdGenerater";
 import {ISlideObject, isSlideObject} from "./ISlideObject";
 
 type TextboxAlignment = 'left' | 'center' | 'right'
@@ -9,9 +10,9 @@ type TextboxStyles = {
 }
 
 function isTextboxStyles(object: any): object is TextboxStyles {
-    const hasBold = typeof object.bold === 'boolean'
-    const hasItalic = typeof object.italic === 'boolean'
-    const hasUnderlined = typeof object.underlined === 'boolean'
+    const hasBold = typeof object.bold === "boolean"
+    const hasItalic = typeof object.italic === "boolean"
+    const hasUnderlined = typeof object.underlined === "boolean"
 
     return hasBold && hasItalic && hasUnderlined
 }
@@ -28,11 +29,11 @@ type Textbox = ISlideObject & {
 
 function createTextbox(): Textbox {
     return {
-        id: "8===>",
+        id: generateId(),
         width: 100,
         height: 100,
-        x: 250,
-        y: 250,
+        x: 0,
+        y: 0,
         textColor: "#000",
         backgroundColor: "#fff",
         text: "",
@@ -43,7 +44,7 @@ function createTextbox(): Textbox {
             italic: false,
             underlined: false,
         },
-        alignment: 'left',
+        alignment: "left",
     }
 }
 

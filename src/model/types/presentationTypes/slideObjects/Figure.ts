@@ -1,3 +1,4 @@
+import { generateId } from "../../../../actions/IdGenerater";
 import {ISlideObject, isSlideObject} from "./ISlideObject";
 
 type FigureType = 'ellipse' | 'triangle' | 'rectangle'
@@ -11,14 +12,14 @@ type Figure = ISlideObject & { //I - interface
 
 function createFigure(figureType: FigureType): Figure{
     return {
-        id: "8===>",
+        id: generateId(),
         width: 100,
         height: 100,
-        x: 250,
-        y: 250,
+        x: 0,
+        y: 0,
         color: "#fff",
         strokeColor: "#000",
-        opacity: 0,
+        opacity: 1,
         type: figureType,
     }
 }

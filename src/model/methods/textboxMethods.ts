@@ -180,3 +180,13 @@ function changeTextAlignment(app: ApplicationState, alignment: TextboxAlignment)
         },
     }
 }
+
+export {
+    addTextbox,
+    changeTextColor,
+    changeTextBackground,
+    changeTextSize,
+    changeFont,
+    changeTextStyle,
+    changeTextAlignment,
+}

@@ -1,10 +1,11 @@
 import {ColorBackground, Slide} from "../types/presentationTypes/Slide";
 import {ApplicationState} from "../types/Application";
 import {createSelection} from "../types/SelectionData";
+import { generateId } from "../../actions/IdGenerater";
 
-function addSlide(app: ApplicationState): ApplicationState { //декларативная хуета
+function addSlide(app: ApplicationState): ApplicationState { 
     const newSlide = {
-        id: '',
+        id: generateId(),
         objects: [],
         background: ''
     }
@@ -93,7 +94,7 @@ function setBackgroundSlide(app: ApplicationState, background: ColorBackground):
                 if (app.selection.slideId === slide.id) {
                     return {
                         ...slide,
-                        background
+                        background: background,
                     }
                 }
                 return slide

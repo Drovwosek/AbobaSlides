@@ -1,3 +1,4 @@
+import { generateId } from "../../../../actions/IdGenerater";
 import {ISlideObject, isSlideObject} from "./ISlideObject";
 
 
@@ -8,12 +9,12 @@ export type Image = ISlideObject & { /*см фигму*/
 
 function createImage(img: string): Image{
     return {
-        id: "8===>",
+        id: generateId(),
         width: 100,
         height: 100,
-        x: 250,
-        y: 250,
-        opacity: 100,
+        x: 0,
+        y: 0,
+        opacity: 1,
         src: img,
     }
 }

@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: space-around;
     margin-left: 1.5%;
-    width: 20%;
+    width: 22%;
     height: 85%;
 }
 
@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: space-around;
     margin-left: 1.5%;
-    width: 5%;
+    width: 9%;
     height: 85%;
 }
 
@@ -52,7 +52,7 @@
     align-items: center;
     justify-content: space-around;
     margin-left: 1.5%;
-    width: 3.5%;
+    width: 5%;
     height: 85%;
 }
 
@@ -92,6 +92,13 @@
 
 .listSizeFonts {
     width: 45px;
+    height: 25px;
+    overflow: hidden;
+    font-size: 18px;
+}
+
+.listOpacity {
+    width: 60px;
     height: 25px;
     overflow: hidden;
     font-size: 18px;

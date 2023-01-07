@@ -1,5 +1,4 @@
 import {Image as ImageType} from "../../model/types/presentationTypes/slideObjects/Image";
-import React, {ReactNode} from "react";
 import {Rect} from "./Rect";
 import styles from "./Image.module.css";
 

@@ -1,5 +1,3 @@
-import { NONAME } from "dns";
-import React from "react";
 import styles from "./Dot.module.css";
 
 type DotProps = {

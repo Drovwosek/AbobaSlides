@@ -24,7 +24,27 @@ function setImageAsBackground(app: ApplicationState, src: string): ApplicationSt
         ...app,
         presentation: {
             ...app.presentation,
-            slides
+            slides,
+        }
+    }
+}
+
+function changeOpacityImage(app: ApplicationState, opacity: number): ApplicationState {
+    const slides = app.presentation.slides.map(slide => {
+        if (app.selection.slideId === slide.id) {
+            return {
+                ...slide,
+                opacity,
+            }
+        }
+        return slide
+    })
+
+    return {
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides,
         }
     }
 }
@@ -32,4 +52,5 @@ function setImageAsBackground(app: ApplicationState, src: string): ApplicationSt
 export {
     addImage,
     setImageAsBackground,
+    changeOpacityImage,
 }

@@ -7,10 +7,13 @@ import {FigureView} from "../objects/Figure";
 import {Image} from "../objects/Image";
 import {isTextbox} from "../../model/types/presentationTypes/slideObjects/Textbox";
 import {Textbox} from "../objects/Textbox";
+import { ApplicationState } from '../../model/types/Application';
+import store from '../../store/store';
+import { selectSlide } from '../../store/actionCreators';
 
 type SlideProps = {
   slide: SlideData,
-  selectObjectIds: Array<string>,
+    selectObjectIds: Array<string>,
 }
 
 function getSlideObject(slide: SlideData, selectedObjectIds: Array<string>): Array<ReactNode> {
@@ -22,7 +25,7 @@ function getSlideObject(slide: SlideData, selectedObjectIds: Array<string>): Arr
                 <FigureView 
                      key={obj.id}
                      figure={obj}
-                     selected={(selectedObjectIds.includes(obj.id) )}
+                     selected={(selectedObjectIds.includes(obj.id))}
                 />
             )
         } 
