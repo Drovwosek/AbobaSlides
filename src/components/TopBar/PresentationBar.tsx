@@ -16,7 +16,7 @@ const exportPresa = () => {
     document.body.appendChild(a);
     a.style.display = 'none';
     a.href = url;
-    a.download = 'YourPresentation.json';
+    a.download = `${store.getState().presentation.name}.json`;
     a.click();
 }
 
