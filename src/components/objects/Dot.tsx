@@ -26,6 +26,7 @@ function Dot(props: DotProps) {
 
     return (
         <div className={style}
+             draggable='true'
              style={{
                  display: (props.selected) ? ""  : "none", 
              }}

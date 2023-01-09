@@ -1,8 +1,9 @@
 import styles from "./Rect.module.css";
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useState, useRef} from "react";
 import {Dot} from "./Dot";
 import { moveObject, selectObject, unselectObject } from "../../store/actionCreators";
 import store from "../../store/store";
+import { useDragAndDrop } from "../../actions/DragAndDrop";
 
 type RectProps = {
     x: number | 0,
@@ -16,14 +17,30 @@ type RectProps = {
 
 function Rect(props: RectProps) {
     const [select, setSelect] = useState(false)
+    const [rectCoords, setRectCoords] = useState({x: props.x, y: props.y});
+    const rectRef =  useRef<HTMLDivElement>(null);
+
+    useDragAndDrop({
+        coords: rectCoords,
+        setNewCoords: setRectCoords,
+    }, {
+        ref: rectRef,
+        isSelected: props.selected,
+        needUpdate: true,
+    },
+    (newX: number, newY: number) => {
+        store.dispatch(moveObject({x: newX, y: newY}))
+    });
+
     return (
-        <div className={styles.rect} style={{
+        <div className={styles.rect}  draggable={false} style={{
             left: props.x,
             top: props.y,
             width: props.width,
             height: props.height,
             border: props.selected ? "1px dashed #000" : "",
         }}
+        ref={rectRef}
         onClick={() => {
             if (select) {
                 store.dispatch(unselectObject(props.objectId))
@@ -32,9 +49,8 @@ function Rect(props: RectProps) {
                 store.dispatch(selectObject(props.objectId))
                 setSelect(true)
             }
-            console.log(props.objectId)
-            store.getState().selection.objectIds.forEach(id => {console.log(id)})
         }}
+        onDragStart={() => setSelect(true)}
         >
             <Dot selected={props.selected}
                  type="LeftTop"

@@ -1,4 +1,3 @@
-import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { App } from './App/App';
@@ -11,9 +10,7 @@ const root = ReactDOM.createRoot(
 
 const update = () => {
 root.render(
-  <Provider store={store}>
-      <App />
-  </Provider>
+    <App />
 );
 }
 

@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {Textbox as TextboxType} from "../../model/types/presentationTypes/slideObjects/Textbox";
 import {Rect} from "./Rect";
 import styles from "./Textbox.module.css"
+import store from "../../store/store";
+import { setText } from "../../store/actionCreators";
 
 type TextboxProps = {
     textbox: TextboxType,
@@ -9,6 +11,8 @@ type TextboxProps = {
 }
 
 function Textbox(props: TextboxProps) {
+    const [text, setTextState] = useState('')
+
     return (
         <Rect x={props.textbox.x}
               y={props.textbox.y}
@@ -28,7 +32,12 @@ function Textbox(props: TextboxProps) {
                     textDecoration: (props.textbox.styles.underlined) ? "underline" : "",
                     textAlign: props.textbox.alignment,
                 }}
-                defaultValue={props.textbox.text}
+                value={text}
+                onChange={event => 
+                    {
+                        setTextState(event.target.value)
+                        store.dispatch(setText({objectId: props.textbox.id, text: event.target.value}))
+                    }}
             /> 
         </Rect>
     )

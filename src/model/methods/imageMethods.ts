@@ -1,7 +1,12 @@
 import {ApplicationState} from "../types/Application";
-import {createImage} from "../types/presentationTypes/slideObjects/Image";
+import {createImage, isImage} from "../types/presentationTypes/slideObjects/Image";
 import {addSlideObject} from "./objectMethods";
 
+export type ImagePayload = {
+    src: string,
+    width: number,
+    height: number,
+}
 
 function addImage(app: ApplicationState, src: string): ApplicationState {
     return addSlideObject(app, createImage(src))
@@ -34,8 +39,17 @@ function changeOpacityImage(app: ApplicationState, opacity: number): Application
         if (app.selection.slideId === slide.id) {
             return {
                 ...slide,
-                opacity,
+                objects: slide.objects.map(obj => {
+                    if (app.selection.objectIds.includes(obj.id) && isImage(obj)) {
+                        return {
+                            ...obj,
+                            opacity: opacity,
+                        }
+                    }
+                    return obj
+                })
             }
+
         }
         return slide
     })
@@ -45,7 +59,7 @@ function changeOpacityImage(app: ApplicationState, opacity: number): Application
         presentation: {
             ...app.presentation,
             slides,
-        }
+        },
     }
 }
 

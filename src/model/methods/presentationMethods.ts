@@ -16,7 +16,7 @@ function exportPresentationJson(app: ApplicationState): string {
     return JSON.stringify(app.presentation)
 }
 
-function importPresentationJson(app: ApplicationState, json: string): ApplicationState {
+function importPresentationJson(json: string): ApplicationState {
     const rawPresentation = JSON.parse(json)
 
     if (!isPresentation(rawPresentation)) {

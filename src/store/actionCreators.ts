@@ -1,9 +1,10 @@
 import { ColorBackground, ImageBackground } from "../model/types/presentationTypes/Slide";
-import { ADD_SLIDE, CHANGE_FONT, CHANGE_OPACITY, CHANGE_OPACITY_IMAGE, CHANGE_PRESENTATION_TITLE, CHANGE_TEXT_ALIGNMENT, CHANGE_TEXT_BACKGROUND, CHANGE_TEXT_COLOR, CHANGE_TEXT_SIZE, CHANGE_TEXT_STYLE, CREATE_FIGURE, CREATE_IMAGE, CREATE_SLIDE, CREATE_TEXTBOX, DELETE_OBJECT, DELETE_SLIDE, MOVE_OBJECT, MOVE_SLIDE, RESIZE_OBJECT, SELECT_OBJECT, SELECT_SLIDE, SET_BACKGROUND_SLIDE, SET_COLOR_FIGURE, SET_STROKECOLOR_FIGURE, UNSELECT_SLIDE, UNSELECT_OBJECT } from "./actions";
+import { ADD_SLIDE, CHANGE_FONT, CHANGE_OPACITY, CHANGE_OPACITY_IMAGE, CHANGE_PRESENTATION_TITLE, CHANGE_TEXT_ALIGNMENT, CHANGE_TEXT_BACKGROUND, CHANGE_TEXT_COLOR, CHANGE_TEXT_SIZE, CHANGE_TEXT_STYLE, CREATE_FIGURE, CREATE_IMAGE, CREATE_SLIDE, CREATE_TEXTBOX, DELETE_OBJECT, DELETE_SLIDE, MOVE_OBJECT, MOVE_SLIDE, RESIZE_OBJECT, SELECT_OBJECT, SELECT_SLIDE, SET_BACKGROUND_SLIDE, SET_COLOR_FIGURE, SET_STROKECOLOR_FIGURE, UNSELECT_SLIDE, UNSELECT_OBJECT, SET_IMAGE_BACKGROUND, SET_TEXT } from "./actions";
 import { Slide } from "../model/types/presentationTypes/Slide";
 import { MoveObjectPayload, ResizeObjectPayload } from "../model/methods/objectMethods";
 import { FigureType } from "../model/types/presentationTypes/slideObjects/Figure";
 import { TextboxStyles, TextboxAlignment } from "../model/types/presentationTypes/slideObjects/Textbox";
+import { textPayload } from "../model/methods/textboxMethods";
 
 
 function changePresentationTitle(title: string) {
@@ -136,9 +137,23 @@ function changeOpacityImage(opacity: number) {
     }
 }
 
+function setImageBackground(src: string) {
+    return {
+        type: SET_IMAGE_BACKGROUND,
+        src,
+    }
+}
+
 function createTextbox() {
     return {
         type: CREATE_TEXTBOX,
+    }
+}
+
+function setText(payload: textPayload) {
+    return {
+        type: SET_TEXT,
+        payload,
     }
 }
 
@@ -204,7 +219,9 @@ export {
     changeOpacity,
     createImage,
     changeOpacityImage,
+    setImageBackground,
     createTextbox,
+    setText,
     changeTextColor,
     changeTextBackground,
     changeTextSize,

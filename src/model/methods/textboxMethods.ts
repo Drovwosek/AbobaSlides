@@ -2,9 +2,48 @@ import {createTextbox, isTextbox, Textbox, TextboxStyles, TextboxAlignment} from
 import {ApplicationState} from "../types/Application";
 import {addSlideObject} from "./objectMethods";
 import {SelectionData} from "../types/SelectionData";
+import { Slide } from "../types/presentationTypes/Slide";
 
 function addTextbox(app: ApplicationState): ApplicationState {
     return addSlideObject(app, createTextbox())
+}
+
+export type textPayload = {
+    objectId: string,
+    text: string,
+}
+
+function setText(app: ApplicationState, payload: textPayload): ApplicationState {
+    let slides: Array<Slide>
+    if (app.selection.objectIds.includes(payload.objectId)){
+        slides = app.presentation.slides.map(slide => {
+            if (slide.id === app.selection.slideId) {
+                return {
+                    ...slide,
+                    objects: slide.objects.map(obj => {
+                        if (payload.objectId === obj.id && isTextbox(obj)) {
+                            return {
+                                ...obj,
+                                text: payload.text
+                            }
+                        }
+                        return obj
+                    })
+                }
+            }
+            return slide
+        })
+    } else {
+        slides = app.presentation.slides
+    }
+
+    return {
+        ...app,
+        presentation: {
+            ...app.presentation,
+            slides,
+        }
+    }
 }
 
 function changeTextColor(app: ApplicationState, selectColor: string): ApplicationState {
@@ -183,6 +222,7 @@ function changeTextAlignment(app: ApplicationState, alignment: TextboxAlignment)
 
 export {
     addTextbox,
+    setText,
     changeTextColor,
     changeTextBackground,
     changeTextSize,
