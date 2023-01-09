@@ -28,8 +28,11 @@ function deleteSlides(app: ApplicationState, SlideIds: Slide): ApplicationState 
         ...app,
         presentation: {
             ...app.presentation,
-
-            slides: app.presentation.slides.slice(0, app.presentation.slides.length - 1)
+            slides: app.presentation.slides.filter(slide => slide.id !== app.selection.slideId)
+        },
+        selection: {
+            ...app.selection,
+            slideId: app.presentation.slides[0].id
         }
     }
 }

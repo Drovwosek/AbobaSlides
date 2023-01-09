@@ -9,10 +9,6 @@ import store from '../store/store';
 import { addSlide, changePresentationTitle, selectSlide, createSlide as createSlideAction } from '../store/actionCreators';
 import {connect} from 'react-redux'
 
-type AppProps = {
-    app: ApplicationState,
-}
-
 function getSlide(): SlideType {
     let slide
 
@@ -25,9 +21,15 @@ function getSlide(): SlideType {
         }
         else
         {
-            slide = createSlide()
-            store.dispatch(addSlide(slide))
-            store.dispatch(selectSlide(slide.id))
+            if (store.getState().presentation.slides.length === 0)
+            {
+                slide = createSlide()
+                store.dispatch(addSlide(slide))
+                store.dispatch(selectSlide(slide.id))
+            } else {
+                slide = store.getState().presentation.slides[0]
+                store.dispatch(selectSlide(slide.id))
+            }
         }
     }
     else
@@ -40,7 +42,7 @@ function getSlide(): SlideType {
     return slide
 }
 
-function App(props: any) {
+function App() {
     const [title, setTitle] = useState(store.getState().presentation.name) 
 
     return (
@@ -71,17 +73,6 @@ function App(props: any) {
     );
 }
 
-const mapStateToProps = (state: any) => ({app: state})
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        addSlide: (slide: any) => dispatch(addSlide(slide)),
-        createSlide: () => dispatch(createSlide()),
-        
-    }
-}
-
-export default connect(mapStateToProps)(App)
 
 export {
     App,
