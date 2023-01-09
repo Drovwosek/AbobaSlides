@@ -8,7 +8,7 @@ import {Image} from "../objects/Image"
 import {isTextbox} from "../../model/types/presentationTypes/slideObjects/Textbox"
 import {Textbox} from "../objects/Textbox"
 import store from '../../store/store'
-import { createSlide, deleteSlide, setImageBackground } from '../../store/actionCreators'
+import { createSlide, deleteObject, deleteSlide, setImageBackground } from '../../store/actionCreators'
 import { loadImageFromDisk, imageUrlToBase64 } from '../../core/ImageLoader'
 
 
@@ -126,6 +126,10 @@ function Slide(props: SlideProps) {
                          }} 
                     >
                         Set image background
+                    </div>
+                    <div className={styles.contextMenuPartition}></div>
+                    <div className={styles.contextMenuOption} onClick={() => {store.dispatch(deleteObject())}}>
+                        Delete objects
                     </div>
                 </div>
             )}

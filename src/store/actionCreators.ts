@@ -75,7 +75,7 @@ function unselectObject(objectId: string) {
     }
 }
 
-function deleteObject(objectId: string) {
+function deleteObject() {
     return {
         type: DELETE_OBJECT,
     }
