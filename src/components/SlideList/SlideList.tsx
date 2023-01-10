@@ -11,26 +11,6 @@ type SlideThumbnailProps = {
 }
 
 function SlideThumbnail(props: SlideThumbnailProps) {
-    const [isShown, setIsShown] = useState(false)
-    const [position, setPosition] = useState({x: 0, y: 0})
-
-    const showContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-        event.preventDefault()
-
-        setIsShown(false)
-
-        setPosition({
-            x: event.pageX,
-            y: event.pageY,
-        })
-
-        setIsShown(true)
-    }
-
-    const hideContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-        setIsShown(false)
-    }
-
     return (
         <div 
             className={styles.thumbnail}
@@ -39,19 +19,6 @@ function SlideThumbnail(props: SlideThumbnailProps) {
             }}
         >
             <Slide slide={props.slide} selectObjectIds={props.selectionObjectIds}/>
-            {isShown && (
-                <div 
-                    className={styles.contextMenu}
-                    style={{top: position.y, left: position.x}}
-                >
-                    <div className={styles.contextMenuOption} onClick={() => {store.dispatch(createSlide())}}>
-                        Add slide
-                    </div>
-                    <div className={styles.contextMenuOption} onClick={() => {store.dispatch(deleteSlide(props.slide.id))}}>
-                        Delete slide
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
@@ -65,43 +32,11 @@ function getSlides(slides: Array<SlideData>): Array<ReactNode> {
 }
 
 function SlideList() {
-    // const [isShown, setIsShown] = useState(false)
-    // const [position, setPosition] = useState({x: 0, y: 0})
-
-    // const showContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-    //     event.preventDefault()
-
-    //     setIsShown(false)
-
-    //     setPosition({
-    //         x: event.pageX,
-    //         y: event.pageY,
-    //     })
-
-    //     setIsShown(true)
-    // }
-
-    // const hideContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-    //     setIsShown(false)
-    // }
-
     return (
         <div 
-            className={styles.slideList}
-            // onContextMenu={showContextMenu}
-            // onClick={hideContextMenu}              
+            className={styles.slideList}    
         >
             {getSlides(store.getState().presentation.slides)}
-            {/* {isShown && (
-                <div 
-                    className={styles.contextMenu}
-                    style={{top: position.y, left: position.x}}
-                >
-                    <div className={styles.contextMenuOption} onClick={() => {store.dispatch(createSlide())}}>
-                        Add slide
-                    </div>
-                </div>
-            )} */}
         </div>
     )
 }
