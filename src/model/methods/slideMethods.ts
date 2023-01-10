@@ -3,6 +3,8 @@ import {ApplicationState} from "../types/Application";
 import {createSelection} from "../types/SelectionData";
 import { generateId } from "../../actions/IdGenerater";
 
+
+
 function addSlide(app: ApplicationState): ApplicationState { 
     const newSlide = {
         id: generateId(),

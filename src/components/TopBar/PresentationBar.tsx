@@ -4,7 +4,6 @@ import IconExport from "../../images/IconExportPresa.svg";
 import IconImport from "../../images/IconImport.svg";
 import IconUndo from "../../images/undo.svg";
 import IconRedo from "../../images/redo.svg";
-import jsPDF from "jspdf";
 import { exportPresentationJson, importPresentationJson } from "../../model/methods/presentationMethods";
 import store from "../../store/store";
 
