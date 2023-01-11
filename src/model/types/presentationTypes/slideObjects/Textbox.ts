@@ -35,7 +35,7 @@ function createTextbox(): Textbox {
         x: 0,
         y: 0,
         textColor: "#000",
-        backgroundColor: "#fff",
+        backgroundColor: "#00000000",
         text: "",
         font: "Times New Roman",
         textSize: 10,
@@ -54,7 +54,7 @@ function isTextbox(object: any): object is Textbox {
     const hasText = typeof object.text  === 'string'
     const hasFont = typeof object.font === 'string'
     const hasTextSize = typeof object.textSize === 'number'
-    const hasStyles = isTextboxStyles(object.styles)
+    const hasStyles = object.styles && isTextboxStyles(object.styles)
     const hasAlignment = typeof object.alignment === 'string'
 
     return isSlideObject(object) && hasTextColor && hasBackgroundColor && hasText && hasFont && hasTextSize && hasStyles && hasAlignment

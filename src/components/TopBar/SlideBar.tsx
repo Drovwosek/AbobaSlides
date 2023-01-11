@@ -24,14 +24,13 @@ export function SlideBar() {
             <p className={styles.barName}>Slide</p>
             <div className={styles.barActions}>
                 <input 
-                value={color} 
-                type="color" 
-                className={styles.icon} 
-                onChange={event => {
-                    setColor(event.target.value)
-                    store.dispatch(setBackgroundSlide(`${event.target.value}`))
-                }}/>
-                <img className={styles.icon} src={IconSetSlideBackgroundImage} alt="" />
+                    value={color}
+                    type="color"
+                    className={styles.icon}
+                    onChange={event => {
+                        setColor(event.target.value)
+                        store.dispatch(setBackgroundSlide(`${event.target.value}`))
+                    }}/>
             </div>
         </div>
     )

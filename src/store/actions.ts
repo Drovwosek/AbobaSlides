@@ -35,6 +35,9 @@ const CHANGE_FONT = 'CHANGE_FONT'
 const CHANGE_TEXT_STYLE = 'CHANGE_TEXT_STYLE'
 const CHANGE_TEXT_ALIGNMENT = 'CHANGE_TEXT_ALIGNMENT'
 
+const GO_TO_LAST_STATE = 'BACK_TO_LAST_STATE'
+const GO_TO_NEXT_STATE = 'GO_TO_NEXT_STATE'
+
 /* 
     Презентация, Слайды, Объекты, Фигуры(круг/квадрат/треугольник), Картинки, текстбоксы 
 */
@@ -69,4 +72,6 @@ export {
     CHANGE_FONT,
     CHANGE_TEXT_STYLE,
     CHANGE_TEXT_ALIGNMENT,
+    GO_TO_LAST_STATE,
+    GO_TO_NEXT_STATE,
 }

@@ -1,43 +1,10 @@
-.dotLeftTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #fbfbfb;
-    cursor: pointer;
-}
-
-.dotRightTop {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #fbfbfb;
-    cursor: pointer;
-}
-
 .dotRightBottom {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: -8px;
+    right: -8px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #fbfbfb;
-    cursor: pointer;
-}
-
-.dotLeftBottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #fbfbfb;
+    background-color: #4c4c4c;
     cursor: pointer;
 }

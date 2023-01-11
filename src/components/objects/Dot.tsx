@@ -1,4 +1,5 @@
 import styles from "./Dot.module.css";
+import {DragEventHandler} from "react";
 
 type DotProps = {
     selected: boolean,
@@ -8,33 +9,20 @@ type DotProps = {
     width: number,
     height: number,
     objectId: string,
+    onDragStart: DragEventHandler<HTMLDivElement>,
+    onDragEnd: DragEventHandler<HTMLDivElement>,
 }
 
 function Dot(props: DotProps) {
-    let style
-    switch (props.type) {
-        case "LeftTop":
-            style = styles.dotLeftTop;
-            break;
-        case "LeftBottom":
-            style = styles.dotLeftBottom;
-            break;
-        case "RightTop":
-            style = styles.dotRightTop;
-            break;
-        case "RightBottom":
-            style = styles.dotRightBottom;
-            break;    
-        default:
-            break;
-    }
-
+    const {onDragStart, onDragEnd} = props
     return (
-        <div className={style}
+        <div className={styles.dotRightBottom}
+             draggable={true}
              style={{
                  display: (props.selected) ? ""  : "none", 
              }}
-
+             onDragStart={onDragStart}
+             onDragEnd={onDragEnd}
         >   
         </div>
     )

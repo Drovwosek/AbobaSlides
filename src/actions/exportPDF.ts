@@ -7,7 +7,7 @@ import { ISlideObject } from "../model/types/presentationTypes/slideObjects/ISli
 import store from "../store/store";
 import CanvasTextWrapper from 'canvas-text-wrapper';
 
-async function setBackgroundImage(doc: jsPDF, image: string) {
+function setBackgroundImage(doc: jsPDF, image: string) {
     doc.addImage (
         image,
         'jpg',
@@ -25,6 +25,7 @@ function setBackgroundColor(doc: jsPDF, color: string) {
         0,
         1200,
         674,
+        'FD'
     );
 }
 
@@ -102,7 +103,7 @@ function addFigure(doc: jsPDF, object: Figure) {
 
 async function addObjectOnPage(doc: jsPDF, object: ISlideObject) {
     // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async () => {
+    return new Promise(async (resolve) => {
         if (isTextbox(object)) {
             addTextBox(doc, object);
         }
@@ -112,6 +113,8 @@ async function addObjectOnPage(doc: jsPDF, object: ISlideObject) {
             const base64 = object.src;
             addImage(doc, object, base64);
         }
+
+        resolve({})
     });
 }
 
@@ -136,6 +139,7 @@ async function addObjectsOnPage(doc: jsPDF, objects: Array<ISlideObject>) {
 
 async function addSlides(doc: jsPDF, slides: Array<Slide>) {
     for (let i = 0; i < slides.length; i++) {
+        console.log('addSlide')
         const slide = slides[i];
         if (typeof (slide.background) === 'string')
         {
@@ -145,6 +149,7 @@ async function addSlides(doc: jsPDF, slides: Array<Slide>) {
         {
             await setBackgroundImage(doc, slide.background.src);
         }
+        console.log('addObjectOnSlide')
         await addObjectsOnPage(doc, slide.objects);
         doc.addPage();
     }
@@ -159,5 +164,6 @@ export async function exportPDF() {
     });
     await addSlides(doc, store.getState().presentation.slides);
     doc.deletePage(doc.getNumberOfPages());
+    console.log('pam pam')
     doc.save(`${store.getState().presentation.name}.pdf`);
 }

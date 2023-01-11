@@ -8,7 +8,15 @@ import IconAlignLeftText from "../../images/iconAlignLeftText.svg";
 import IconAlignCenterText from "../../images/iconAlignCenterText.svg";
 import IconAlignRightText from "../../images/iconAlignRightText.svg";
 import store from "../../store/store";
-import { changeFont, changeTextAlignment, changeTextBackground, changeTextSize, changeTextStyle, createTextbox } from "../../store/actionCreators";
+import {
+    changeFont,
+    changeTextAlignment,
+    changeTextBackground,
+    changeTextColor,
+    changeTextSize,
+    changeTextStyle,
+    createTextbox
+} from "../../store/actionCreators";
 
 export function TextBar() {
     const [font, setFont] = useState()
@@ -28,7 +36,7 @@ export function TextBar() {
                 <input type='color' className={styles.icon} value={color} 
                        onChange={event => {
                         setColor(event.target.value)
-                           store.dispatch(changeTextBackground(event.target.value))
+                           store.dispatch(changeTextColor(event.target.value))
                        }}
                 /> 
                 <select className={styles.listFonts} value={font} 

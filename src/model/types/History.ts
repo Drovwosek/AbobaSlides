@@ -1,16 +1,17 @@
 import {ApplicationState} from "./Application";
 
-//
+export const undoStack: Array<ApplicationState> = [];
+export const redoStack: Array<ApplicationState> = [];
 
-const undoStack: Array<ApplicationState> = [];
-const redoStack: Array<ApplicationState> = [];
-
-function addToHistory(application: ApplicationState) {
-    undoStack.push(application)
+function clearRedo() {
+    while(redoStack.length > 0) {
+        redoStack.pop();
+    }
 }
 
-function clearRedo(application: ApplicationState) {
-   redoStack.filter(() => false)
+function addToHistory(application: ApplicationState) {
+    clearRedo()
+    undoStack.push(application)
 }
 
 function undo(currentState: ApplicationState): ApplicationState {
@@ -24,9 +25,9 @@ function undo(currentState: ApplicationState): ApplicationState {
     return slideState;
 }
 
-function redo(): ApplicationState | undefined {
+function redo(currentState: ApplicationState): ApplicationState {
     if (!redoStack.length) {
-        return undefined
+        return currentState
     }
 
     const slidesState: ApplicationState = redoStack.pop()!;

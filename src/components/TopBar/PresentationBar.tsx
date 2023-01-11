@@ -6,6 +6,7 @@ import IconUndo from "../../images/undo.svg";
 import IconRedo from "../../images/redo.svg";
 import { exportPresentationJson, importPresentationJson } from "../../model/methods/presentationMethods";
 import store from "../../store/store";
+import {goToLastState, goToNextState} from "../../store/actionCreators";
 import { importPresentation } from "../../store/actionCreators";
 import { createSelection } from "../../model/types/SelectionData";
 import jsPDF from "jspdf";
@@ -13,6 +14,7 @@ import { exportPDF } from "../../actions/exportPDF";
 
 const exportPresa = () => {
     const json = `data:text/json;chatset=utf-8,${encodeURIComponent(exportPresentationJson(store.getState()))}`;
+    console.log(store.getState())
     const link = document.createElement('a');
     link.style.display = 'none';
     link.href = json;
@@ -45,14 +47,18 @@ export function PresentationBar() {
         <div className={styles.presentationBar}>
             <p className={styles.barName}>Presentation</p>
             <div className={styles.barActions}>
-                <img className={styles.icon} src={IconExport} alt="" 
+                <img className={styles.icon} src={IconUndo} alt="" onClick={() => {store.dispatch(goToLastState())}}/>
+                <img className={styles.icon} src={IconRedo} alt="" onClick={() => {store.dispatch(goToNextState())}} />
+                <img className={styles.icon} src={IconExport} alt=""
                 onClick={() => {
                     exportPresa()
-                    exportPDF()
                 }}/>
                 <img className={styles.icon} src={IconImport} alt="" onClick={importPresa}/>
-                <img className={styles.icon} src={IconUndo} alt=""/>
-                <img className={styles.icon} src={IconRedo} alt=""/>
+                <img className={styles.icon} src={IconRedo} alt="" onClick={() => {
+                    console.log('export')
+                    exportPDF()
+                }
+                }/>
             </div>
         </div>
     )
