@@ -42,7 +42,7 @@ type Slide = {
 
 function isSlide(object: any): object is Slide {
     const hasId = typeof object.id === 'string'
-    const hasObjects = isArrayOf<ISlideObject>(object.slides, isSlideObject)
+    const hasObjects = isArrayOf<ISlideObject>(object.objects, isSlideObject)
     const hasBackground = typeof object.background == 'string' || isImageBackground(object.background)
 
     return hasId && hasObjects && hasBackground

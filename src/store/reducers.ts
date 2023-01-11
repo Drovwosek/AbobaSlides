@@ -15,6 +15,9 @@ import {addToHistory, clearRedo, redo, undo, undoStack} from "../model/types/His
 const defaultApplication: ApplicationState = createPresentation()
 
 const applicationReducers = (state = defaultApplication, action: any) => {
+    if (action.type !== GO_TO_LAST_STATE && action.type !== GO_TO_NEXT_STATE) {
+        clearRedo()
+    }
     switch (action.type) {
         case IMPORT_PRESENTATION:
             return action.app
@@ -86,7 +89,9 @@ const applicationReducers = (state = defaultApplication, action: any) => {
             addToHistory(state)
             return changeTextAlignment(state, action.alignment)
         default:
-            addToHistory(state)
+            if((action.type !== SELECT_OBJECT) && (action.type !== SELECT_SLIDE) && (action.type !== UNSELECT_OBJECT) && (action.type !== UNSELECT_SLIDE)) {
+                addToHistory(state)
+            }
             return {
                 presentation: presentationReducers(state.presentation, action),
                 selection: selectionReducers(state.selection, action),

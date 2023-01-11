@@ -139,7 +139,6 @@ async function addObjectsOnPage(doc: jsPDF, objects: Array<ISlideObject>) {
 
 async function addSlides(doc: jsPDF, slides: Array<Slide>) {
     for (let i = 0; i < slides.length; i++) {
-        console.log('addSlide')
         const slide = slides[i];
         if (typeof (slide.background) === 'string')
         {
@@ -149,7 +148,6 @@ async function addSlides(doc: jsPDF, slides: Array<Slide>) {
         {
             await setBackgroundImage(doc, slide.background.src);
         }
-        console.log('addObjectOnSlide')
         await addObjectsOnPage(doc, slide.objects);
         doc.addPage();
     }
@@ -164,6 +162,5 @@ export async function exportPDF() {
     });
     await addSlides(doc, store.getState().presentation.slides);
     doc.deletePage(doc.getNumberOfPages());
-    console.log('pam pam')
     doc.save(`${store.getState().presentation.name}.pdf`);
 }

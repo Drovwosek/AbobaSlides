@@ -10,7 +10,6 @@ function clearRedo() {
 }
 
 function addToHistory(application: ApplicationState) {
-    clearRedo()
     undoStack.push(application)
 }
 

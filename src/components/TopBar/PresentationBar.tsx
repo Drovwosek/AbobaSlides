@@ -33,7 +33,7 @@ function importPresa() {
             filereader.readAsText(file);
             filereader.onload = () => {
                 if (typeof filereader.result === "string") {
-                    store.dispatch(importPresentation({presentation: JSON.parse(filereader.result), selection: createSelection()}))
+                    store.dispatch(importPresentation(importPresentationJson(filereader.result)))
                 }
             }
         }
@@ -50,15 +50,11 @@ export function PresentationBar() {
                 <img className={styles.icon} src={IconUndo} alt="" onClick={() => {store.dispatch(goToLastState())}}/>
                 <img className={styles.icon} src={IconRedo} alt="" onClick={() => {store.dispatch(goToNextState())}} />
                 <img className={styles.icon} src={IconExport} alt=""
-                onClick={() => {
-                    exportPresa()
-                }}/>
+                     onClick={() => {
+                         exportPDF()
+                     }}
+                />
                 <img className={styles.icon} src={IconImport} alt="" onClick={importPresa}/>
-                <img className={styles.icon} src={IconRedo} alt="" onClick={() => {
-                    console.log('export')
-                    exportPDF()
-                }
-                }/>
             </div>
         </div>
     )
