@@ -34,9 +34,15 @@ function getSlide(): SlideType {
     }
     else
     {
-        slide = createSlide()
-        store.dispatch(addSlide(slide))
-        store.dispatch(selectSlide(slide.id))
+        if (store.getState().presentation.slides.length === 0)
+        {
+            slide = createSlide()
+            store.dispatch(addSlide(slide))
+            store.dispatch(selectSlide(slide.id))
+        } else {
+            slide = store.getState().presentation.slides[0]
+            store.dispatch(selectSlide(slide.id))
+        }
     }
 
     return slide
@@ -72,7 +78,6 @@ function App() {
         </div>
     );
 }
-
 
 export {
     App,

@@ -3,6 +3,11 @@ import styles from "./Dot.module.css";
 type DotProps = {
     selected: boolean,
     type: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    objectId: string,
 }
 
 function Dot(props: DotProps) {
@@ -29,6 +34,7 @@ function Dot(props: DotProps) {
              style={{
                  display: (props.selected) ? ""  : "none", 
              }}
+
         >   
         </div>
     )

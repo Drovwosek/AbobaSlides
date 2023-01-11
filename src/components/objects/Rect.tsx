@@ -3,7 +3,6 @@ import React, {ReactNode, useState, useRef} from "react";
 import {Dot} from "./Dot";
 import { moveObject, selectObject, unselectObject } from "../../store/actionCreators";
 import store from "../../store/store";
-import { useDragAndDrop } from "../../actions/DragAndDrop";
 
 type RectProps = {
     x: number | 0,
@@ -17,30 +16,20 @@ type RectProps = {
 
 function Rect(props: RectProps) {
     const [select, setSelect] = useState(false)
-    const [rectCoords, setRectCoords] = useState({x: props.x, y: props.y});
-    const rectRef =  useRef<HTMLDivElement>(null);
-
-    useDragAndDrop({
-        coords: rectCoords,
-        setNewCoords: setRectCoords,
-    }, {
-        ref: rectRef,
-        isSelected: props.selected,
-        needUpdate: true,
-    },
-    (newX: number, newY: number) => {
-        store.dispatch(moveObject({x: newX, y: newY}))
-    });
+    let startX: number
+    let startY: number
+    let endX
+    let endY
 
     return (
-        <div className={styles.rect}  draggable={false} style={{
+        <div className={styles.rect}  draggable={true} style={{
             left: props.x,
             top: props.y,
             width: props.width,
             height: props.height,
             border: props.selected ? "1px dashed #000" : "",
+            resize: 'both',
         }}
-        ref={rectRef}
         onClick={() => {
             if (select) {
                 store.dispatch(unselectObject(props.objectId))
@@ -50,21 +39,50 @@ function Rect(props: RectProps) {
                 setSelect(true)
             }
         }}
-        onDragStart={() => setSelect(true)}
+        onDragStart={(event) => {
+            setSelect(true)
+            startX = event.pageX
+            startY = event.pageY
+        }}
+        onDragEnd={(event) => {
+            endX = props.x + event.pageX - startX
+            endY = props.y + event.pageY - startY
+            store.dispatch(moveObject({objectId: props.objectId, x: endX, y: endY}))
+        }}
         >
+            {props.children}
             <Dot selected={props.selected}
                  type="LeftTop"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
             />
             <Dot selected={props.selected}
                  type="LeftBottom"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
             />
             <Dot selected={props.selected}
                  type="RightTop"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
             />
             <Dot selected={props.selected}
                  type="RightBottom"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
             />
-            {props.children}
         </div>
     )
 }

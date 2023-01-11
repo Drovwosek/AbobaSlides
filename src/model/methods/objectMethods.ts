@@ -43,6 +43,7 @@ function unselectObject(app: ApplicationState, object: ISlideObject): Applicatio
 }
 
 export interface MoveObjectPayload { /* получаем конечные коордианты из /события нажать отпустить/ */
+    objectId: string,
     x: number,
     y: number,
 }
@@ -52,11 +53,11 @@ function moveObject(app: ApplicationState, payload: MoveObjectPayload): Applicat
             return {
                 ...slide,
                 objects: slide.objects.map(obj => {
-                    if (app.selection.objectIds.includes(obj.id)) {
+                    if (payload.objectId === obj.id) {
                         return {
                             ...obj,
-                            x: obj.x + payload.x,
-                            y: obj.y + payload.y,
+                            x: payload.x,
+                            y: payload.y,
                         }
                     }
                     return obj

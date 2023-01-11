@@ -1,7 +1,7 @@
 import { ApplicationState } from "../model/types/Application"
 import { createPresentation } from "../model/types/presentationTypes/Presentation"
 import { generateId } from "../actions/IdGenerater"
-import { ADD_SLIDE, CHANGE_PRESENTATION_TITLE, CREATE_SLIDE, DELETE_SLIDE, SELECT_SLIDE, SET_BACKGROUND_SLIDE, UNSELECT_SLIDE, MOVE_SLIDE, SELECT_OBJECT, UNSELECT_OBJECT, MOVE_OBJECT, RESIZE_OBJECT, DELETE_OBJECT, CREATE_FIGURE, SET_COLOR_FIGURE, SET_STROKECOLOR_FIGURE, CHANGE_OPACITY, CREATE_IMAGE, CHANGE_OPACITY_IMAGE, CREATE_TEXTBOX, CHANGE_TEXT_COLOR, CHANGE_TEXT_BACKGROUND, CHANGE_TEXT_SIZE, CHANGE_FONT, CHANGE_TEXT_STYLE, CHANGE_TEXT_ALIGNMENT, SET_IMAGE_BACKGROUND, SET_TEXT } from "./actions"
+import { ADD_SLIDE, CHANGE_PRESENTATION_TITLE, CREATE_SLIDE, DELETE_SLIDE, SELECT_SLIDE, SET_BACKGROUND_SLIDE, UNSELECT_SLIDE, MOVE_SLIDE, SELECT_OBJECT, UNSELECT_OBJECT, MOVE_OBJECT, RESIZE_OBJECT, DELETE_OBJECT, CREATE_FIGURE, SET_COLOR_FIGURE, SET_STROKECOLOR_FIGURE, CHANGE_OPACITY, CREATE_IMAGE, CHANGE_OPACITY_IMAGE, CREATE_TEXTBOX, CHANGE_TEXT_COLOR, CHANGE_TEXT_BACKGROUND, CHANGE_TEXT_SIZE, CHANGE_FONT, CHANGE_TEXT_STYLE, CHANGE_TEXT_ALIGNMENT, SET_IMAGE_BACKGROUND, SET_TEXT, IMPORT_PRESENTATION} from "./actions"
 import { Slide } from "../model/types/presentationTypes/Slide"
 import { createSelection } from "../model/types/SelectionData"
 import { deleteSlides, setBackgroundSlide } from "../model/methods/slideMethods"
@@ -15,6 +15,8 @@ const defaultApplication: ApplicationState = createPresentation()
 
 const applicationReducers = (state = defaultApplication, action: any) => {
     switch (action.type) {
+        case IMPORT_PRESENTATION:
+            return action.app
         case SET_BACKGROUND_SLIDE:
             return setBackgroundSlide(state, action.background)
         case MOVE_SLIDE:
