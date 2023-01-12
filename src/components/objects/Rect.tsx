@@ -118,8 +118,16 @@ function Rect(props: RectProps) {
                 setSelect(true)
             }
         }}
-        onDragStart={(event) => {startDrag(event)}}
-        onDragEnd={(event) => {endDrag(event)}}
+        onDragStart={(event) => {
+            if (select) {
+                startDrag(event)
+            }
+        }}
+        onDragEnd={(event) => {
+            if (select) {
+                endDrag(event)
+            }
+        }}
         >
             {props.children}
             <Dot selected={props.selected}
