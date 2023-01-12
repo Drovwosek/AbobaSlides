@@ -14,9 +14,26 @@ type DotProps = {
 }
 
 function Dot(props: DotProps) {
+    let style
     const {onDragStart, onDragEnd} = props
+
+    switch (props.type) {
+        case "RightBottom":
+            style = styles.dotRightBottom
+            break
+        case "RightTop":
+            style = styles.dotRightTop
+            break
+        case "LeftTop":
+            style = styles.dotLeftTop
+            break
+        case "LeftBottom":
+            style = styles.dotLeftBottom
+            break
+    }
+
     return (
-        <div className={styles.dotRightBottom}
+        <div className={style}
              draggable={true}
              style={{
                  display: (props.selected) ? ""  : "none", 

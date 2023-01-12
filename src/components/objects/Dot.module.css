@@ -8,3 +8,36 @@
     background-color: #4c4c4c;
     cursor: pointer;
 }
+
+.dotRightTop {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4c4c4c;
+    cursor: pointer;
+}
+
+.dotLeftTop {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4c4c4c;
+    cursor: pointer;
+}
+
+.dotLeftBottom {
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4c4c4c;
+    cursor: pointer;
+}

@@ -55,6 +55,11 @@ export function PresentationBar() {
                      }}
                 />
                 <img className={styles.icon} src={IconImport} alt="" onClick={importPresa}/>
+                <img className={styles.icon} src={IconExport} alt=""
+                     onClick={() => {
+                         exportPresa()
+                     }}
+                />
             </div>
         </div>
     )

@@ -48,15 +48,54 @@ function Rect(props: RectProps) {
         store.dispatch(moveObject({objectId: props.objectId, x: endX, y: endY}))
     }
 
-    function startResize(event: DragEvent<HTMLDivElement>) {
+    function startResizeRightBottom(event: DragEvent<HTMLDivElement>) {
         isResizing.current = true
         startSizeX = event.pageX
         startSizeY = event.pageY
     }
 
-    function endResize(event: DragEvent<HTMLDivElement>) {
+    function endResizeRightBottom(event: DragEvent<HTMLDivElement>) {
         event.stopPropagation()
         store.dispatch(resizeObject({width: props.width + event.pageX - startSizeX, height: props.height + event.pageY - startSizeY}))
+        isResizing.current = false
+    }
+
+    function startResizeRightTop(event: DragEvent<HTMLDivElement>) {
+        isResizing.current = true
+        startSizeX = event.pageX
+        startSizeY = event.pageY
+    }
+
+    function endResizeRightTop(event: DragEvent<HTMLDivElement>) {
+        event.stopPropagation()
+        store.dispatch(moveObject({objectId: props.objectId, x: props.x, y: props.y - startSizeY + event.pageY}))
+        store.dispatch(resizeObject({width: props.width + event.pageX - startSizeX, height: props.height - event.pageY + startSizeY}))
+        isResizing.current = false
+    }
+
+    function startResizeLeftTop(event: DragEvent<HTMLDivElement>) {
+        isResizing.current = true
+        startSizeX = event.pageX
+        startSizeY = event.pageY
+    }
+
+    function endResizeLeftTop(event: DragEvent<HTMLDivElement>) {
+        event.stopPropagation()
+        store.dispatch(moveObject({objectId: props.objectId, x: props.x - startSizeX + event.pageX, y: props.y - startSizeY + event.pageY}))
+        store.dispatch(resizeObject({width: props.width - event.pageX + startSizeX, height: props.height - event.pageY + startSizeY}))
+        isResizing.current = false
+    }
+
+    function startResizeLeftBottom(event: DragEvent<HTMLDivElement>) {
+        isResizing.current = true
+        startSizeX = event.pageX
+        startSizeY = event.pageY
+    }
+
+    function endResizeLeftBottom(event: DragEvent<HTMLDivElement>) {
+        event.stopPropagation()
+        store.dispatch(moveObject({objectId: props.objectId, x: props.x - startSizeX + event.pageX, y: props.y}))
+        store.dispatch(resizeObject({width: props.width - event.pageX + startSizeX, height: props.height + event.pageY - startSizeY}))
         isResizing.current = false
     }
 
@@ -90,8 +129,38 @@ function Rect(props: RectProps) {
                  width={props.width}
                  height={props.height}
                  objectId={props.objectId}
-                 onDragStart={startResize}
-                 onDragEnd={endResize}
+                 onDragStart={startResizeRightBottom}
+                 onDragEnd={endResizeRightBottom}
+            />
+            <Dot selected={props.selected}
+                 type="RightTop"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
+                 onDragStart={startResizeRightTop}
+                 onDragEnd={endResizeRightTop}
+            />
+            <Dot selected={props.selected}
+                 type="LeftTop"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
+                 onDragStart={startResizeLeftTop}
+                 onDragEnd={endResizeLeftTop}
+            />
+            <Dot selected={props.selected}
+                 type="LeftBottom"
+                 x={props.x}
+                 y={props.y}
+                 width={props.width}
+                 height={props.height}
+                 objectId={props.objectId}
+                 onDragStart={startResizeLeftBottom}
+                 onDragEnd={endResizeLeftBottom}
             />
         </div>
     )
