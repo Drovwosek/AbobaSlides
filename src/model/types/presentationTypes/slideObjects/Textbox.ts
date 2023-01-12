@@ -38,7 +38,7 @@ function createTextbox(): Textbox {
         backgroundColor: "#00000000",
         text: "",
         font: "Times New Roman",
-        textSize: 10,
+        textSize: 30,
         styles: {
             bold: false,
             italic: false,

@@ -46,7 +46,6 @@ export function TextBar() {
                         }}
                 >
                     <option>Times New Roman</option>
-                    <option>IBM Plex Suns Condensed</option>
                     <option>Roboto</option>
                 </select>
                 <select className={styles.listSizeFonts}
@@ -56,9 +55,10 @@ export function TextBar() {
                             store.dispatch(changeTextSize(Number(event.target.value)))
                         }}
                 >
-                    <option>2</option>
-                    <option>4</option>
+                    <option>15</option>
                     <option>30</option>
+                    <option>45</option>
+                    <option>60</option>
                 </select>
                 <div>
                     <img className={styles.icon} src={IconBoldText} alt=""
