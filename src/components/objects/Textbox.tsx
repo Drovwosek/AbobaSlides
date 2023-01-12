@@ -32,10 +32,9 @@ function Textbox(props: TextboxProps) {
                     textDecoration: (props.textbox.styles.underlined) ? "underline" : "",
                     textAlign: props.textbox.alignment,
                 }}
-                value={text}
+                value={props.textbox.text}
                 onChange={event => 
                     {
-                        setTextState(event.target.value)
                         store.dispatch(setText({objectId: props.textbox.id, text: event.target.value}))
                     }}
             /> 
