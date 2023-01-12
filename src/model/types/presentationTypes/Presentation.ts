@@ -20,7 +20,7 @@ type PresentationConfig = {
 }
 
 const defaultConfig: PresentationConfig = {
-    name: "New Presentation",
+    name: "S как доллар",
 }
 
 function createPresentation(config: PresentationConfig = defaultConfig): ApplicationState {

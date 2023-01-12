@@ -22,7 +22,7 @@ export function SlideBar() {
     return (
         <div className={styles.slideBar}>
             <p className={styles.barName}>Slide</p>
-            <div className={styles.barActions}>
+            <div className={styles.SlideBarActions}>
                 <input 
                     value={color}
                     type="color"

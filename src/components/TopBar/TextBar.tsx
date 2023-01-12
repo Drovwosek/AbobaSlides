@@ -46,7 +46,9 @@ export function TextBar() {
                         }}
                 >
                     <option>Times New Roman</option>
+                    <option>IBM Plex Suns Condensed</option>
                     <option>Roboto</option>
+                    <option>Inter</option>
                 </select>
                 <select className={styles.listSizeFonts}
                         value={fontSize}
@@ -59,6 +61,7 @@ export function TextBar() {
                     <option>30</option>
                     <option>45</option>
                     <option>60</option>
+                    <option>240</option>
                 </select>
                 <div>
                     <img className={styles.icon} src={IconBoldText} alt=""

@@ -70,6 +70,18 @@
     width: 100%;
 }
 
+.barActions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.SlideBarActions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .icon {
     width: 25px;
 }
